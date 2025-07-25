@@ -1,0 +1,27 @@
+{
+  "enabled": true,
+  "name": "Documentation Sync",
+  "description": "Monitors TypeScript source files, configuration files, and project structure changes to automatically update README.md and supabase/README.md documentation",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "*.ts",
+      "*.js",
+      "*.json",
+      "package.json",
+      "tsconfig*.json",
+      "vite.config.ts",
+      "tailwind.config.js",
+      "eslint.config.js",
+      "supabase/**/*.sql",
+      "supabase/**/*.toml"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Source code or configuration files have been modified in this TypeScript React project. Please review the changes and update the documentation accordingly. Focus on:\n\n1. Update README.md if there are changes to:\n   - Project setup or installation steps\n   - Available scripts or commands\n   - Core features or functionality\n   - Technology stack or dependencies\n   - Usage examples or API changes\n\n2. Update supabase/README.md if there are changes to:\n   - Database schema or migrations\n   - Supabase configuration\n   - Authentication setup\n   - Backend services or API endpoints\n\n3. Consider updating any inline code documentation or comments that may be outdated\n\nPlease ensure the documentation remains accurate, helpful, and reflects the current state of the codebase. Include any new features, breaking changes, or important implementation details that users and developers should know about."
+  }
+}
