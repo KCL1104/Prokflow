@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { ErrorBoundary } from '../components/error';
-import { ProtectedRoute } from '../components/routing';
-import { AppLayout } from '../components/layout';
-
-// Auth pages
-import { AuthPage, CallbackPage, ResetPasswordPage } from '../pages/Auth';
-
-// Main app pages
-import { DashboardPage } from '../pages/Dashboard';
-import { ProjectDetailPage } from '../pages/Projects/ProjectDetailPage';
-import { BacklogPage } from '../pages/BacklogPage';
-import { BoardPage } from '../pages/Board';
-import { GanttPage } from '../pages/Gantt';
-import { SprintsPage } from '../pages/Sprints';
-import { ReportsPage } from '../pages/Reports';
-import { SettingsPage } from '../pages/Settings';
-import { NotFoundPage } from '../pages/NotFoundPage';
-
-=======
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -53,12 +31,12 @@ const BacklogPage = createLazyComponent(
 );
 
 const BoardPage = createLazyComponent(
-  () => import('../pages/Board'),
+  () => import('../pages/Board').then(module => ({ default: module.BoardPage })),
   'BoardPage'
 );
 
 const GanttPage = createLazyComponent(
-  () => import('../pages/Gantt'),
+  () => import('../pages/Gantt').then(module => ({ default: module.GanttPage })),
   'GanttPage'
 );
 
@@ -68,16 +46,15 @@ const SprintsPage = createLazyComponent(
 );
 
 const ReportsPage = createLazyComponent(
-  () => import('../pages/Reports'),
+  () => import('../pages/Reports').then(module => ({ default: module.ReportsPage })),
   'ReportsPage'
 );
 
 const SettingsPage = createLazyComponent(
-  () => import('../pages/Settings'),
+  () => import('../pages/Settings').then(module => ({ default: module.SettingsPage })),
   'SettingsPage'
 );
 
->>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 // Placeholder for projects list page
 const ProjectsListPage: React.FC = () => (
   <div className="space-y-6">
@@ -97,72 +74,6 @@ const ProjectsListPage: React.FC = () => (
 
 export const AppRouter: React.FC = () => {
   return (
-<<<<<<< HEAD
-    <BrowserRouter>
-      <ErrorBoundary>
-        <Routes>
-          {/* Public routes */}
-          <Route
-            path="/auth"
-            element={
-              <ProtectedRoute requireAuth={false}>
-                <AuthPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/auth/callback"
-            element={
-              <ProtectedRoute requireAuth={false}>
-                <CallbackPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/auth/reset-password"
-            element={
-              <ProtectedRoute requireAuth={false}>
-                <ResetPasswordPage />
-              </ProtectedRoute>
-            }
-          />
-
-          {/* Protected routes with layout */}
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <AppLayout />
-              </ProtectedRoute>
-            }
-          >
-            {/* Redirect root to dashboard */}
-            <Route index element={<Navigate to="/dashboard" replace />} />
-            
-            {/* Main app routes */}
-            <Route path="dashboard" element={<DashboardPage />} />
-            
-            {/* Projects routes */}
-            <Route path="projects" element={<ProjectsListPage />} />
-            <Route path="projects/:projectId" element={<ProjectDetailPage />} />
-            
-            {/* Project-specific feature routes */}
-            <Route path="projects/:projectId/backlog" element={<BacklogPage />} />
-            <Route path="projects/:projectId/sprints" element={<SprintsPage />} />
-            <Route path="projects/:projectId/board" element={<BoardPage />} />
-            <Route path="projects/:projectId/gantt" element={<GanttPage />} />
-            <Route path="projects/:projectId/reports" element={<ReportsPage />} />
-            
-            {/* Global routes */}
-            <Route path="settings" element={<SettingsPage />} />
-          </Route>
-
-          {/* 404 page */}
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </ErrorBoundary>
-    </BrowserRouter>
-=======
     <Provider store={store}>
       <ErrorTrackingProvider>
         <PerformanceMonitoringProvider>
@@ -298,6 +209,5 @@ export const AppRouter: React.FC = () => {
         </PerformanceMonitoringProvider>
       </ErrorTrackingProvider>
     </Provider>
->>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   );
 };

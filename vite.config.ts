@@ -1,15 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
-<<<<<<< HEAD
-=======
 import { resolve } from 'path'
->>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-<<<<<<< HEAD
-=======
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
@@ -91,5 +86,4 @@ export default defineConfig({
     // Ensure environment variables are properly handled in production
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
   }
->>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 })
