@@ -118,6 +118,10 @@ export const ProductBacklogProvider: React.FC<ProductBacklogProviderProps> = ({
   );
 };
 
+<<<<<<< HEAD
+=======
+// eslint-disable-next-line react-refresh/only-export-components
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 export const useProductBacklog = (): ProductBacklogContextValue => {
   const context = useContext(ProductBacklogContext);
   if (!context) {

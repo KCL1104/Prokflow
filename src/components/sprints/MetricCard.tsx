@@ -21,7 +21,11 @@ export const MetricCard: React.FC<MetricCardProps> = ({
   valueColor = 'text-gray-900'
 }) => {
   return (
+<<<<<<< HEAD
     <div className="bg-white rounded-lg border border-gray-200 p-6">
+=======
+    <div className="bg-warm-25 rounded-lg border-2 border-default p-6 hover:bg-warm-50 transition-colors duration-150">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       <div className="flex items-center justify-between mb-2">
         <h3 className="text-sm font-medium text-gray-900">{title}</h3>
         <Icon name={icon} className={`h-5 w-5 ${iconColor}`} />

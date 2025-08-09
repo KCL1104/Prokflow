@@ -39,7 +39,11 @@ export const BacklogFilterBar: React.FC<BacklogFilterBarProps> = React.memo(({
   isAllSelected
 }) => {
   return (
+<<<<<<< HEAD
     <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
+=======
+    <div className="px-6 py-4 border-b-2 border-gray-300 bg-white">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         {/* Search */}
         <div className="md:col-span-2">

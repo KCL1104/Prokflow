@@ -12,7 +12,11 @@ export type NonEmptyArray<T> = [T, ...T[]];
 export type ArrayElement<T> = T extends (infer U)[] ? U : never;
 
 // Function utility types
+<<<<<<< HEAD
 export type AsyncFunction<T extends any[], R> = (...args: T) => Promise<R>;
+=======
+export type AsyncFunction<T extends unknown[], R> = (...args: T) => Promise<R>;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 export type EventHandler<T = Event> = (event: T) => void;
 export type Callback<T = void> = () => T;
 
@@ -98,14 +102,22 @@ export type StateMachine<S extends string, E extends string> = {
 };
 
 // Event types
+<<<<<<< HEAD
 export interface CustomEvent<T = any> {
+=======
+export interface CustomEvent<T = unknown> {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   type: string;
   payload: T;
   timestamp: number;
   source?: string;
 }
 
+<<<<<<< HEAD
 export type EventListener<T = any> = (event: CustomEvent<T>) => void;
+=======
+export type EventListener<T = unknown> = (event: CustomEvent<T>) => void;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
 // Cache types
 export interface CacheEntry<T> {
@@ -143,8 +155,13 @@ export type StorageKey = string;
 export type StorageValue = string | number | boolean | object | null;
 
 export interface StorageOptions {
+<<<<<<< HEAD
   serialize?: (value: any) => string;
   deserialize?: (value: string) => any;
+=======
+  serialize?: (value: unknown) => string;
+  deserialize?: (value: string) => unknown;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   ttl?: number;
 }
 

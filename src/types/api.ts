@@ -190,6 +190,7 @@ export interface RealtimeSubscriptionConfig {
   event?: 'INSERT' | 'UPDATE' | 'DELETE' | '*';
 }
 
+<<<<<<< HEAD
 export interface RealtimePayload<T = any> {
   commit_timestamp: string;
   eventType: 'INSERT' | 'UPDATE' | 'DELETE';
@@ -199,4 +200,6 @@ export interface RealtimePayload<T = any> {
   table: string;
 }
 
+=======
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 // Note: Avoiding circular imports - these types are defined in index.ts

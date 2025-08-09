@@ -16,6 +16,10 @@ export interface SprintService {
   calculateSprintCapacity(projectId: string): Promise<number>;
   getSprintBurndown(sprintId: string): Promise<BurndownData[]>;
   getSprintWorkItemIds(sprintId: string): Promise<string[]>;
+<<<<<<< HEAD
+=======
+  addWorkItemsToSprint(sprintId: string, workItemIds: string[]): Promise<{ id: string; work_items: string[] }>;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 }
 
 // Helper function to transform database sprint to domain model
@@ -28,10 +32,17 @@ function transformDbSprint(dbSprint: DbSprint): Sprint {
     startDate: new Date(dbSprint.start_date),
     endDate: new Date(dbSprint.end_date),
     status: dbSprint.status,
+<<<<<<< HEAD
     capacity: dbSprint.capacity,
     workItems: [], // Will be populated separately
     retrospectiveNotes: dbSprint.retrospective_notes || undefined,
     createdAt: new Date(dbSprint.created_at)
+=======
+    capacity: dbSprint.capacity || 0,
+    workItems: [], // Will be populated separately
+    retrospectiveNotes: dbSprint.retrospective_notes || undefined,
+    createdAt: new Date(dbSprint.created_at || '')
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   };
 }
 
@@ -217,13 +228,22 @@ export const sprintService: SprintService = {
 
   async calculateSprintCapacity(projectId: string): Promise<number> {
     try {
+<<<<<<< HEAD
       const { data: velocity, error } = await supabase.rpc('calculate_sprint_velocity', {
+=======
+      const { data: velocity, error: dbError } = await supabase.rpc('calculate_sprint_velocity', {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         p_project_id: projectId,
         p_sprint_count: 3 // Use last 3 sprints for velocity calculation
       });
 
+<<<<<<< HEAD
       if (error) {
         console.warn('Failed to calculate velocity, using default capacity:', error.message);
+=======
+      if (dbError?.message) {
+        console.warn('Failed to calculate velocity, using default capacity:', dbError.message);
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         return 20; // Default capacity
       }
 
@@ -236,6 +256,7 @@ export const sprintService: SprintService = {
 
   async getSprintBurndown(sprintId: string): Promise<BurndownData[]> {
     try {
+<<<<<<< HEAD
       const { data: burndownData, error } = await supabase.rpc('get_sprint_burndown', {
         p_sprint_id: sprintId
       });
@@ -249,6 +270,60 @@ export const sprintService: SprintService = {
         remainingPoints: item.remaining_points,
         idealRemaining: item.ideal_remaining
       }));
+=======
+      // Get sprint details
+      const { data: sprint, error: sprintError } = await supabase
+        .from('sprints')
+        .select('start_date, end_date')
+        .eq('id', sprintId)
+        .single();
+
+      if (sprintError || !sprint) {
+        throw new Error(`Failed to get sprint details: ${sprintError?.message}`);
+      }
+
+      // Get all work items in the sprint with their estimates
+      const { data: workItems, error: workItemsError } = await supabase
+        .from('work_items')
+        .select('estimate, status, updated_at')
+        .eq('sprint_id', sprintId);
+
+      if (workItemsError) {
+        throw new Error(`Failed to get sprint work items: ${workItemsError.message}`);
+      }
+
+      const startDate = new Date(sprint.start_date);
+      const endDate = new Date(sprint.end_date);
+      const totalDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+      const totalPoints = (workItems || []).reduce((sum, item) => sum + (item.estimate || 0), 0);
+
+      const burndownData: BurndownData[] = [];
+      
+      // Generate burndown data for each day
+      for (let day = 0; day <= totalDays; day++) {
+        const currentDate = new Date(startDate);
+        currentDate.setDate(startDate.getDate() + day);
+        
+        // Calculate remaining points for this date
+        const completedPoints = (workItems || [])
+          .filter(item => {
+            const updatedAt = new Date(item.updated_at || '');
+            return item.status === 'Done' && updatedAt <= currentDate;
+          })
+          .reduce((sum, item) => sum + (item.estimate || 0), 0);
+        
+        const remainingPoints = totalPoints - completedPoints;
+        const idealRemaining = totalPoints - (totalPoints * day / totalDays);
+        
+        burndownData.push({
+          date: currentDate.toISOString().split('T')[0],
+          remainingPoints,
+          idealRemaining: Math.max(0, idealRemaining)
+        });
+      }
+
+      return burndownData;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     } catch (error) {
       console.warn('Error getting sprint burndown:', error);
       return [];
@@ -268,5 +343,43 @@ export const sprintService: SprintService = {
     }
 
     return (workItems || []).map(item => item.id);
+<<<<<<< HEAD
+=======
+  },
+
+  async addWorkItemsToSprint(sprintId: string, workItemIds: string[]): Promise<{ id: string; work_items: string[] }> {
+    // Update the sprint with the work items
+    const { data: _sprint, error: sprintError } = await supabase
+      .from('sprints')
+      .update({
+        work_items: workItemIds,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', sprintId)
+      .select()
+      .single();
+
+    if (sprintError) {
+      throw new Error(`Failed to update sprint: ${sprintError.message}`);
+    }
+
+    // Update work items to reference the sprint
+    const { error: workItemError } = await supabase
+      .from('work_items')
+      .update({
+        sprint_id: sprintId,
+        updated_at: new Date().toISOString()
+      })
+      .in('id', workItemIds);
+
+    if (workItemError) {
+      throw new Error(`Failed to update work items: ${workItemError.message}`);
+    }
+
+    return {
+      id: sprintId,
+      work_items: workItemIds
+    };
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   }
 };

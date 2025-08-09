@@ -109,17 +109,34 @@ describe('LoginForm', () => {
     expect(passwordInput).toHaveAttribute('type', 'password');
   });
 
+<<<<<<< HEAD
   it('calls social login when provider buttons are clicked', async () => {
+=======
+  it('calls social login with Google when Google button is clicked', async () => {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     mockSignInWithProvider.mockResolvedValue({ error: null });
     renderLoginForm();
     
     const googleButton = screen.getByRole('button', { name: /google/i });
+<<<<<<< HEAD
     const githubButton = screen.getByRole('button', { name: /github/i });
+=======
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
     fireEvent.click(googleButton);
     await waitFor(() => {
       expect(mockSignInWithProvider).toHaveBeenCalledWith('google');
     });
+<<<<<<< HEAD
+=======
+  });
+
+  it('calls social login with GitHub when GitHub button is clicked', async () => {
+    mockSignInWithProvider.mockResolvedValue({ error: null });
+    renderLoginForm();
+    
+    const githubButton = screen.getByRole('button', { name: /github/i });
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
     fireEvent.click(githubButton);
     await waitFor(() => {

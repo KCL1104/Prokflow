@@ -1,5 +1,9 @@
 import { useState } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { useAuth } from '../../contexts/AuthContext';
 
 interface ForgotPasswordFormProps {
@@ -28,7 +32,11 @@ export function ForgotPasswordForm({ onBackToLogin }: ForgotPasswordFormProps) {
         setSuccess('Password reset instructions have been sent to your email address.');
         setEmail('');
       }
+<<<<<<< HEAD
     } catch (err) {
+=======
+    } catch {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       setError('An unexpected error occurred');
     } finally {
       setLoading(false);
@@ -129,4 +137,8 @@ export function ForgotPasswordForm({ onBackToLogin }: ForgotPasswordFormProps) {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

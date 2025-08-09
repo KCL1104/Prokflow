@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export interface AppError {
   message: string;
   code?: string;
@@ -52,3 +53,99 @@ export function getErrorMessage(error: unknown): string {
   const appError = handleError(error);
   return appError.message;
 }
+=======
+import { isKnownError } from './typeGuards';
+// Error classes are available but not used in this file currently
+
+export interface ErrorInfo {
+  message: string;
+  code?: string;
+  details?: unknown;
+}
+
+/**
+ * Standardized error handling utility
+ */
+export class ErrorHandler {
+  static handleApiError(error: unknown, context: string): ErrorInfo {
+    if (isKnownError(error)) {
+      return {
+        message: `${context}: ${error.message}`,
+        details: error.stack,
+      };
+    }
+
+    return {
+      message: `${context}: An unexpected error occurred`,
+      details: error,
+    };
+  }
+
+  static handleDragDropError(error: unknown, itemId: string, targetStatus: string): ErrorInfo {
+    const baseMessage = `Failed to move item ${itemId} to ${targetStatus}`;
+    
+    if (isKnownError(error)) {
+      if (error.message.includes('WIP limit')) {
+        return {
+          message: `Cannot move item: WIP limit reached for ${targetStatus}`,
+          code: 'WIP_LIMIT_EXCEEDED',
+        };
+      }
+      
+      if (error.message.includes('permission')) {
+        return {
+          message: 'You do not have permission to move this item',
+          code: 'PERMISSION_DENIED',
+        };
+      }
+    }
+
+    return {
+      message: baseMessage,
+      details: error,
+    };
+  }
+
+  static createRetryableError(message: string, retryAction: () => void): ErrorInfo & { retry: () => void } {
+    return {
+      message,
+      retry: retryAction,
+    };
+  }
+}
+
+/**
+ * Extract error message from unknown error type
+ */
+export const getErrorMessage = (error: unknown): string => {
+  if (isKnownError(error)) {
+    return error.message;
+  }
+  
+  if (typeof error === 'string') {
+    return error;
+  }
+  
+  if (error && typeof error === 'object' && 'message' in error) {
+    return String(error.message);
+  }
+  
+  return 'An unexpected error occurred';
+};
+
+/**
+ * Hook for consistent error state management
+ */
+export const useErrorHandler = () => {
+  const handleError = (error: unknown, context: string): ErrorInfo => {
+    const errorInfo = ErrorHandler.handleApiError(error, context);
+    
+    // Log error for debugging
+    console.error(`[${context}]`, errorInfo);
+    
+    return errorInfo;
+  };
+
+  return { handleError };
+};
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

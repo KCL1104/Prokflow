@@ -36,7 +36,11 @@ describe('SprintForm', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+<<<<<<< HEAD
     (sprintService.calculateSprintCapacity as jest.MockedFunction<typeof sprintService.calculateSprintCapacity>).mockResolvedValue(20);
+=======
+    vi.mocked(sprintService.calculateSprintCapacity).mockResolvedValue(20);
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   });
 
   it('renders create form correctly', () => {
@@ -86,7 +90,11 @@ describe('SprintForm', () => {
 
   it('handles form submission for new sprint', async () => {
     const mockCreatedSprint = { ...mockSprint, id: 'new-sprint-id' };
+<<<<<<< HEAD
     (sprintService.createSprint as jest.MockedFunction<typeof sprintService.createSprint>).mockResolvedValue(mockCreatedSprint);
+=======
+    vi.mocked(sprintService.createSprint).mockResolvedValue(mockCreatedSprint);
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
     render(<SprintForm {...defaultProps} />);
     
@@ -106,7 +114,11 @@ describe('SprintForm', () => {
 
   it('handles form submission for existing sprint', async () => {
     const mockUpdatedSprint = { ...mockSprint, name: 'Updated Sprint' };
+<<<<<<< HEAD
     (sprintService.updateSprint as jest.MockedFunction<typeof sprintService.updateSprint>).mockResolvedValue(mockUpdatedSprint);
+=======
+    vi.mocked(sprintService.updateSprint).mockResolvedValue(mockUpdatedSprint);
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
     render(<SprintForm {...defaultProps} sprint={mockSprint} />);
     
@@ -124,7 +136,11 @@ describe('SprintForm', () => {
   });
 
   it('handles capacity calculation error gracefully', async () => {
+<<<<<<< HEAD
     (sprintService.calculateSprintCapacity as jest.MockedFunction<typeof sprintService.calculateSprintCapacity>).mockRejectedValue(new Error('Calculation failed'));
+=======
+    vi.mocked(sprintService.calculateSprintCapacity).mockRejectedValue(new Error('Calculation failed'));
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
     render(<SprintForm {...defaultProps} />);
     

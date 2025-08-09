@@ -10,6 +10,10 @@ interface BoardColumnProps {
   workItems: WorkItem[];
   wipLimitStatus: 'normal' | 'at-limit' | 'exceeded';
   isDraggedOver: boolean;
+<<<<<<< HEAD
+=======
+  compact?: boolean;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 }
 
 export const BoardColumn: React.FC<BoardColumnProps> = ({
@@ -25,7 +29,11 @@ export const BoardColumn: React.FC<BoardColumnProps> = ({
   const getColumnHeaderColor = () => {
     if (wipLimitStatus === 'exceeded') return 'bg-red-100 border-red-300';
     if (wipLimitStatus === 'at-limit') return 'bg-yellow-100 border-yellow-300';
+<<<<<<< HEAD
     return 'bg-gray-50 border-gray-200';
+=======
+    return 'bg-white border-gray-300';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   };
 
   const getWipLimitColor = () => {
@@ -73,8 +81,13 @@ export const BoardColumn: React.FC<BoardColumnProps> = ({
       {/* Column Content */}
       <div
         ref={setNodeRef}
+<<<<<<< HEAD
         className={`min-h-96 p-4 bg-gray-50 border-2 border-t-0 rounded-b-lg transition-colors ${
           isOver ? 'bg-blue-50 border-blue-300' : 'border-gray-200'
+=======
+        className={`min-h-96 p-4 bg-white border-2 border-t-0 rounded-b-lg transition-colors ${
+          isOver ? 'bg-blue-50 border-blue-300' : 'border-gray-300'
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         }`}
       >
         <SortableContext

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useMemo } from 'react';
+=======
+import React, { useMemo, useEffect, useState } from 'react';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,6 +16,11 @@ import {
 import type { ChartOptions } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { Icon } from '../common/Icon';
+<<<<<<< HEAD
+=======
+import { Loading } from '../common/Loading';
+import { sprintService } from '../../services';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import type { BurndownData } from '../../types';
 
 // Error boundary for chart rendering
@@ -63,16 +72,67 @@ ChartJS.register(
 );
 
 interface BurndownChartProps {
+<<<<<<< HEAD
   data: BurndownData[];
+=======
+  sprintId: string;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   sprintName: string;
   className?: string;
 }
 
 export const BurndownChart: React.FC<BurndownChartProps> = React.memo(({
+<<<<<<< HEAD
   data,
   sprintName,
   className = ''
 }) => {
+=======
+  sprintId,
+  sprintName,
+  className = ''
+}) => {
+  const [data, setData] = useState<BurndownData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    
+    const fetchBurndownData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const burndownData = await sprintService.getSprintBurndown(sprintId);
+        if (isMounted) {
+          setData(burndownData || []); // Handle null/undefined response
+        }
+      } catch (err) {
+        if (isMounted) {
+          const errorMessage = err instanceof Error ? err.message : 'Failed to load burndown data';
+          setError(errorMessage);
+          console.error('Burndown data fetch error:', err);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    if (sprintId) {
+      fetchBurndownData().catch(err => {
+        if (isMounted) {
+          console.error('Unhandled burndown fetch error:', err);
+        }
+      });
+    }
+    
+    return () => {
+      isMounted = false;
+    };
+  }, [sprintId]);
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   const chartData = useMemo(() => {
     if (!data || data.length === 0) {
       return null;
@@ -235,6 +295,33 @@ export const BurndownChart: React.FC<BurndownChartProps> = React.memo(({
     },
   }), [sprintName]);
 
+<<<<<<< HEAD
+=======
+  if (loading) {
+    return (
+      <div className={`bg-white rounded-lg border border-gray-200 p-6 ${className}`}>
+        <div className="h-64 flex items-center justify-center">
+          <Loading size="large" />
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={`bg-white rounded-lg border border-gray-200 p-6 ${className}`}>
+        <div className="h-64 flex items-center justify-center bg-red-50 rounded-md">
+          <div className="text-center text-red-500">
+            <Icon name="alert-circle" className="h-8 w-8 mx-auto mb-2" />
+            <p className="font-medium">Error loading burndown data</p>
+            <p className="text-sm mt-1">{error}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   if (!chartData || data.length === 0) {
     return (
       <div className={`bg-white rounded-lg border border-gray-200 p-6 ${className}`}>
@@ -307,4 +394,8 @@ export const BurndownChart: React.FC<BurndownChartProps> = React.memo(({
       </div>
     </div>
   );
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

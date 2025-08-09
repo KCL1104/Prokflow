@@ -6,16 +6,29 @@ interface AuthContextType {
   user: User | null
   session: Session | null
   loading: boolean
+<<<<<<< HEAD
   signUp: (email: string, password: string, userData?: { full_name?: string }) => Promise<any>
   signIn: (email: string, password: string) => Promise<any>
   signInWithProvider: (provider: 'google' | 'github') => Promise<any>
   signOut: () => Promise<any>
   resetPassword: (email: string) => Promise<any>
   updatePassword: (password: string) => Promise<any>
+=======
+  signUp: (email: string, password: string, userData?: { full_name?: string }) => Promise<{ user: User | null; error: Error | null }>
+  signIn: (email: string, password: string) => Promise<{ user: User | null; error: Error | null }>
+  signInWithProvider: (provider: 'google' | 'github') => Promise<{ user: User | null; error: Error | null }>
+  signOut: () => Promise<{ error: Error | null }>
+  resetPassword: (email: string) => Promise<{ error: Error | null }>
+  updatePassword: (password: string) => Promise<{ error: Error | null }>
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
+<<<<<<< HEAD
+=======
+// eslint-disable-next-line react-refresh/only-export-components
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 export const useAuth = () => {
   const context = useContext(AuthContext)
   if (context === undefined) {
@@ -75,13 +88,49 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     return () => subscription.unsubscribe()
   }, [])
 
+<<<<<<< HEAD
+=======
+  // Wrapper for signUp to match expected interface
+  const signUp = async (email: string, password: string, userData?: { full_name?: string }) => {
+    const response = await auth.signUp(email, password, userData)
+    return {
+      user: response.data?.user || null,
+      error: response.error
+    }
+  }
+
+  // Wrapper for signIn to match expected interface
+  const signIn = async (email: string, password: string) => {
+    const response = await auth.signIn(email, password)
+    return {
+      user: response.data?.user || null,
+      error: response.error
+    }
+  }
+
+  // Wrapper for signInWithProvider to match expected interface
+  const signInWithProvider = async (provider: 'google' | 'github') => {
+    const response = await auth.signInWithProvider(provider)
+    return {
+      user: null, // OAuth redirects, so user will be null initially
+      error: response.error
+    }
+  }
+
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   const value: AuthContextType = {
     user,
     session,
     loading,
+<<<<<<< HEAD
     signUp: auth.signUp,
     signIn: auth.signIn,
     signInWithProvider: auth.signInWithProvider,
+=======
+    signUp,
+    signIn,
+    signInWithProvider,
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     signOut: auth.signOut,
     resetPassword: auth.resetPassword,
     updatePassword: auth.updatePassword
@@ -95,6 +144,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 }
 
 // Higher-order component for protected routes
+<<<<<<< HEAD
+=======
+// eslint-disable-next-line react-refresh/only-export-components
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 export const withAuth = <P extends object>(
   Component: React.ComponentType<P>
 ): React.FC<P> => {

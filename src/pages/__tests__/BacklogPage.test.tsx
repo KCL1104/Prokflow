@@ -1,6 +1,10 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+<<<<<<< HEAD
 import { BacklogPage } from '../BacklogPage';
+=======
+import BacklogPage from '../BacklogPage';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { workItemService } from '../../services/workItemService';
 import { projectService } from '../../services/projectService';
 import type { WorkItem, TeamMember } from '../../types';
@@ -64,8 +68,13 @@ const createMockTeamMember = (overrides: Partial<TeamMember> = {}): TeamMember =
 const mockWorkItems: WorkItem[] = [createMockWorkItem()];
 const mockTeamMembers: TeamMember[] = [createMockTeamMember()];
 
+<<<<<<< HEAD
 const mockWorkItemService = workItemService as any;
 const mockProjectService = projectService as any;
+=======
+const mockWorkItemService = vi.mocked(workItemService);
+const mockProjectService = vi.mocked(projectService);
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
 describe('BacklogPage', () => {
   beforeEach(() => {
@@ -167,7 +176,11 @@ describe('BacklogPage', () => {
 
   it('displays error when project ID is missing', async () => {
     const { useParams } = await import('react-router-dom');
+<<<<<<< HEAD
     const mockUseParams = useParams as any;
+=======
+    const mockUseParams = vi.mocked(useParams);
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     
     // Temporarily change mock return value
     mockUseParams.mockReturnValue({ projectId: '' });

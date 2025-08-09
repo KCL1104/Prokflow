@@ -16,7 +16,11 @@ export function useUrlState<T extends Record<string, string | undefined>>(
     Object.keys(defaultValues).forEach((key) => {
       const value = searchParams.get(key);
       if (value !== null) {
+<<<<<<< HEAD
         (result as any)[key] = value;
+=======
+        (result as Record<string, string>)[key] = value;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       }
     });
     
@@ -80,7 +84,11 @@ export function useRouteInfo() {
 
   const navigateWithState = useCallback((
     to: string, 
+<<<<<<< HEAD
     options?: { replace?: boolean; state?: any }
+=======
+    options?: { replace?: boolean; state?: unknown }
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   ) => {
     navigate(to, options);
   }, [navigate]);

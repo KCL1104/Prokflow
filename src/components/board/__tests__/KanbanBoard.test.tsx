@@ -154,6 +154,10 @@ describe('KanbanBoard', () => {
       fetchBacklog: vi.fn(),
       createWorkItem: vi.fn(),
       updateWorkItem: vi.fn(),
+<<<<<<< HEAD
+=======
+      getSprintWorkItems: vi.fn(),
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     });
 
     render(
@@ -175,6 +179,10 @@ describe('KanbanBoard', () => {
       fetchBacklog: vi.fn(),
       createWorkItem: vi.fn(),
       updateWorkItem: vi.fn(),
+<<<<<<< HEAD
+=======
+      getSprintWorkItems: vi.fn(),
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     });
 
     render(

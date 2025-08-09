@@ -16,6 +16,10 @@ const mockWorkItem: WorkItem = {
   labels: ['frontend'],
   createdAt: new Date('2024-01-01'),
   updatedAt: new Date('2024-01-01'),
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 };
 
 const defaultProps = {
@@ -149,7 +153,11 @@ describe('EstimationModal', () => {
     });
   });
 
+<<<<<<< HEAD
   it('shows error for invalid custom estimate', async () => {
+=======
+  it('shows error for invalid custom estimate', () => {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     render(<EstimationModal {...defaultProps} />);
     
     const customRadio = screen.getByLabelText('Custom estimate');
@@ -161,31 +169,47 @@ describe('EstimationModal', () => {
     const saveButton = screen.getByText('Save Estimate');
     fireEvent.click(saveButton);
     
+<<<<<<< HEAD
     expect(screen.getByText('Please enter a valid positive number for the estimate')).toBeInTheDocument();
   });
 
   it('shows error for negative custom estimate', async () => {
+=======
+    // Check for validation error
+    expect(screen.getByText('Please enter a valid positive number for the estimate')).toBeInTheDocument();
+  });
+
+  it('shows error for negative custom estimate', () => {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     render(<EstimationModal {...defaultProps} />);
     
     const customRadio = screen.getByLabelText('Custom estimate');
     fireEvent.click(customRadio);
     
+<<<<<<< HEAD
     // Wait for custom input to be enabled
     await waitFor(() => {
       const customInput = screen.getByPlaceholderText('Enter story points');
       expect(customInput).not.toBeDisabled();
     });
     
+=======
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     const customInput = screen.getByPlaceholderText('Enter story points');
     fireEvent.change(customInput, { target: { value: '-5' } });
     
     const saveButton = screen.getByText('Save Estimate');
     fireEvent.click(saveButton);
     
+<<<<<<< HEAD
     // Wait for validation error to appear
     await waitFor(() => {
       expect(screen.getByText('Please enter a valid positive number for the estimate')).toBeInTheDocument();
     });
+=======
+    // Check for validation error
+    expect(screen.getByText('Please enter a valid positive number for the estimate')).toBeInTheDocument();
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   });
 
   it('shows error when no estimate is selected', async () => {

@@ -9,6 +9,10 @@ export * from './projects';
 
 // Work items and backlog components
 export * from './work-items';
+<<<<<<< HEAD
+=======
+export * from './retrospectives';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 export * from './backlog';
 
 // Sprint components

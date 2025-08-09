@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { Modal } from '../common/Modal';
 import { Icon } from '../common/Icon';
 import { sprintService } from '../../services';
@@ -350,7 +354,11 @@ export const SprintForm: React.FC<SprintFormProps> = ({
             <Button
               type="button"
               variant="secondary"
+<<<<<<< HEAD
               size="small"
+=======
+              size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
               onClick={calculateCapacity}
               disabled={isSubmitting}
             >
@@ -388,4 +396,8 @@ export const SprintForm: React.FC<SprintFormProps> = ({
       </form>
     </Modal>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

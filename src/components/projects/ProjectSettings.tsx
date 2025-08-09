@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { Loading } from '../common/Loading';
 import type { Project, UpdateProjectRequest } from '../../types';
 
@@ -45,7 +49,11 @@ export const ProjectSettings: React.FC<ProjectSettingsProps> = ({
   const [hasChanges, setHasChanges] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+<<<<<<< HEAD
   const handleInputChange = (field: string, value: any) => {
+=======
+  const handleInputChange = (field: string, value: string | number | number[] | boolean) => {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     setFormData(prev => ({
       ...prev,
       [field]: value
@@ -61,7 +69,11 @@ export const ProjectSettings: React.FC<ProjectSettingsProps> = ({
     }
   };
 
+<<<<<<< HEAD
   const handleSettingsChange = (field: string, value: any) => {
+=======
+  const handleSettingsChange = (field: string, value: string | number | number[] | boolean) => {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     setFormData(prev => ({
       ...prev,
       settings: {
@@ -204,7 +216,15 @@ export const ProjectSettings: React.FC<ProjectSettingsProps> = ({
                 type="number"
                 id="sprintDuration"
                 value={formData.settings.sprintDuration || ''}
+<<<<<<< HEAD
                 onChange={(e) => handleSettingsChange('sprintDuration', parseInt(e.target.value) || undefined)}
+=======
+                onChange={(e) => {
+                   const value = e.target.value;
+                   const parsed = value ? parseInt(value, 10) : 14; // Default to 14 days
+                   handleSettingsChange('sprintDuration', parsed);
+                 }}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                 min="1"
                 max="30"
                 className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
@@ -223,7 +243,11 @@ export const ProjectSettings: React.FC<ProjectSettingsProps> = ({
             <select
               id="estimationUnit"
               value={formData.settings.estimationUnit}
+<<<<<<< HEAD
               onChange={(e) => handleSettingsChange('estimationUnit', e.target.value as any)}
+=======
+              onChange={(e) => handleSettingsChange('estimationUnit', e.target.value)}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               disabled={isLoading}
             >
@@ -293,4 +317,8 @@ export const ProjectSettings: React.FC<ProjectSettingsProps> = ({
       </form>
     </div>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

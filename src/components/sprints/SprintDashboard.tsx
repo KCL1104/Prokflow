@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { Icon } from '../common/Icon';
 import { Loading } from '../common/Loading';
 import { Modal } from '../common/Modal';
@@ -55,6 +59,10 @@ export const SprintDashboard: React.FC<SprintDashboardProps> = ({
   }, [sprint.id, sprint.status, fetchBurndownData]);
 
   // Split complex calculations into focused hooks
+<<<<<<< HEAD
+=======
+  // Split complex calculations into focused hooks
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   const sprintProgress = useMemo(() => {
     const now = new Date();
     const start = sprint.startDate;
@@ -150,7 +158,11 @@ export const SprintDashboard: React.FC<SprintDashboardProps> = ({
             {error.includes('burndown') && (
               <Button
                 variant="secondary"
+<<<<<<< HEAD
                 size="small"
+=======
+                size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                 onClick={handleRetryBurndown}
                 disabled={loading}
               >
@@ -265,7 +277,11 @@ export const SprintDashboard: React.FC<SprintDashboardProps> = ({
         </div>
       ) : (
         <BurndownChart 
+<<<<<<< HEAD
           data={burndownData} 
+=======
+          sprintId={sprint.id}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
           sprintName={sprint.name}
         />
       )}
@@ -315,4 +331,8 @@ export const SprintDashboard: React.FC<SprintDashboardProps> = ({
       </Modal>
     </div>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

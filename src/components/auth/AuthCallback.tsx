@@ -33,7 +33,11 @@ export function AuthCallback({ onSuccess, onError }: AuthCallbackProps) {
           setStatus('success');
           onSuccess?.();
         }
+<<<<<<< HEAD
       } catch (err) {
+=======
+      } catch {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         const message = 'Authentication failed';
         setErrorMessage(message);
         setStatus('error');

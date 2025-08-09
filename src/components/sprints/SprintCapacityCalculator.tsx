@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Icon, type IconName } from '../common/Icon';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { sprintService } from '../../services';
 
 interface SprintCapacityCalculatorProps {
@@ -86,7 +90,11 @@ export const SprintCapacityCalculator: React.FC<SprintCapacityCalculatorProps> =
         <h3 className="text-lg font-semibold text-gray-900">Sprint Capacity Calculator</h3>
         <Button
           variant="secondary"
+<<<<<<< HEAD
           size="small"
+=======
+          size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
           onClick={calculateCapacity}
           disabled={calculating}
           loading={calculating}
@@ -189,4 +197,8 @@ export const SprintCapacityCalculator: React.FC<SprintCapacityCalculatorProps> =
       )}
     </div>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

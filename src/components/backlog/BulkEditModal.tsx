@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { Modal } from '../common/Modal';
 import type { WorkItem, TeamMember } from '../../types';
 
@@ -164,7 +168,12 @@ export const BulkEditModal: React.FC<BulkEditModalProps> = ({
               const value = e.target.value;
               if (value === 'no-change') {
                 setUpdates(prev => {
+<<<<<<< HEAD
                   const { assigneeId: _, ...rest } = prev;
+=======
+                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                  const { assigneeId, ...rest } = prev;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   return rest;
                 });
               } else {
@@ -263,4 +272,8 @@ export const BulkEditModal: React.FC<BulkEditModalProps> = ({
       </form>
     </Modal>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

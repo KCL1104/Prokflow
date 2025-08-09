@@ -1,17 +1,29 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
+=======
+import React, { useState, useEffect, useCallback } from 'react';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
   ProjectDashboard, 
   ProjectSettings, 
   TeamMemberManagement 
 } from '../../components/projects';
+<<<<<<< HEAD
 import { Button } from '../../components/common';
+=======
+import { Button } from '../../components/ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { projectService } from '../../services/projectService';
 import type { Project, ProjectMetrics, UpdateProjectRequest } from '../../types';
 
 type TabType = 'overview' | 'settings' | 'team';
 
+<<<<<<< HEAD
 export const ProjectDetailPage: React.FC = () => {
+=======
+const ProjectDetailPage: React.FC = () => {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   const { projectId } = useParams<{ projectId: string }>();
   const navigate = useNavigate();
   
@@ -21,6 +33,7 @@ export const ProjectDetailPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+<<<<<<< HEAD
   useEffect(() => {
     if (!projectId) {
       navigate('/projects');
@@ -31,6 +44,9 @@ export const ProjectDetailPage: React.FC = () => {
   }, [projectId, navigate]);
 
   const loadProject = async () => {
+=======
+  const loadProject = useCallback(async () => {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     if (!projectId) return;
 
     setIsLoading(true);
@@ -49,7 +65,20 @@ export const ProjectDetailPage: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
+<<<<<<< HEAD
   };
+=======
+  }, [projectId]);
+
+  useEffect(() => {
+    if (!projectId) {
+      navigate('/projects');
+      return;
+    }
+
+    loadProject();
+  }, [projectId, navigate, loadProject]);
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
   const handleUpdateProject = async (data: UpdateProjectRequest) => {
     if (!project) return;
@@ -221,4 +250,10 @@ export const ProjectDetailPage: React.FC = () => {
       </div>
     </div>
   );
+<<<<<<< HEAD
 };
+=======
+};
+
+export default ProjectDetailPage;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

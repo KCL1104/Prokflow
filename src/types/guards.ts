@@ -173,7 +173,11 @@ export function isAttachment(value: unknown): value is Attachment {
 export function isApiError(error: unknown): error is ApiError {
   if (!isObject(error) || !(error instanceof Error)) return false;
   
+<<<<<<< HEAD
   const apiError = error as any;
+=======
+  const apiError = error as { code?: unknown; status?: unknown };
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   return (
     isString(apiError.code) &&
     (typeof apiError.status === 'undefined' || isNumber(apiError.status))

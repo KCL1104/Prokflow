@@ -9,6 +9,10 @@
       "DOM",
       "DOM.Iterable"
     ],
+<<<<<<< HEAD
+=======
+    "types": ["vitest/globals"],
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     "module": "ESNext",
     "skipLibCheck": true,
     /* Bundler mode */
@@ -27,5 +31,14 @@
   },
   "include": [
     "src"
+<<<<<<< HEAD
+=======
+  ],
+  "exclude": [
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "src/__tests__/**/*",
+    "src/test-utils/**/*"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   ]
 }

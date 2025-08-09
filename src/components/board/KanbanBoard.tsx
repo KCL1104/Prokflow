@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import {
   DndContext,
+<<<<<<< HEAD
   PointerSensor,
   useSensor,
   useSensors,
@@ -10,6 +11,10 @@ import type {
   DragEndEvent,
   DragStartEvent,
 } from '@dnd-kit/core';
+=======
+  closestCorners,
+} from '@dnd-kit/core';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import {
   SortableContext,
   verticalListSortingStrategy,
@@ -19,6 +24,7 @@ import { Icon } from '../common/Icon';
 import { BoardColumn } from './BoardColumn';
 import { BoardFilters } from './BoardFilters';
 import { useWorkItems } from '../../hooks/useWorkItems';
+<<<<<<< HEAD
 import { workItemService } from '../../services';
 import type { WorkItem, WorkflowState } from '../../types';
 
@@ -30,6 +36,12 @@ const WIP_LIMIT_STATUS = {
   EXCEEDED: 'exceeded',
 } as const;
 
+=======
+import { useBoardFiltering } from '../../hooks/useBoardFiltering';
+import { useBoardDragDrop } from '../../hooks/useBoardDragDrop';
+import type { WorkItem, WorkflowState } from '../../types';
+
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 interface KanbanBoardProps {
   projectId: string;
   workflowStates: WorkflowState[];
@@ -38,8 +50,13 @@ interface KanbanBoardProps {
 
 interface FilterOptions {
   assignee?: string[];
+<<<<<<< HEAD
   priority?: string[];
   type?: string[];
+=======
+  priority?: WorkItem['priority'][];
+  type?: WorkItem['type'][];
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   labels?: string[];
   search?: string;
 }
@@ -50,6 +67,7 @@ export const KanbanBoard: React.FC<KanbanBoardProps> = ({
   onWorkItemUpdated
 }) => {
   const { workItems, loading, error, fetchBacklog } = useWorkItems(projectId);
+<<<<<<< HEAD
   const [draggedItem, setDraggedItem] = useState<WorkItem | null>(null);
   const [filters, setFilters] = useState<FilterOptions>({});
   const [isUpdating, setIsUpdating] = useState(false);
@@ -108,21 +126,44 @@ export const KanbanBoard: React.FC<KanbanBoardProps> = ({
   const workItemsByStatus = useMemo(() => {
     const grouped: Record<string, WorkItem[]> = {};
     
+=======
+  const [filters, setFilters] = useState<FilterOptions>({});
+
+  // Use the shared filtering hook
+  const { filteredWorkItems } = useBoardFiltering({
+    workItems,
+    filters
+  });
+
+  // Group work items by status with optimized grouping
+  const workItemsByStatus = useMemo(() => {
+    const grouped: Record<string, WorkItem[]> = {};
+
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     // Initialize all workflow states
     workflowStates.forEach(state => {
       grouped[state.name] = [];
     });
 
+<<<<<<< HEAD
     // Group filtered work items
     filteredWorkItems.forEach(item => {
       if (grouped[item.status]) {
         grouped[item.status].push(item);
+=======
+    // Group filtered work items in single pass
+    filteredWorkItems.forEach(item => {
+      const statusGroup = grouped[item.status];
+      if (statusGroup) {
+        statusGroup.push(item);
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       }
     });
 
     return grouped;
   }, [filteredWorkItems, workflowStates]);
 
+<<<<<<< HEAD
   // Check WIP limits
   const getWipLimitStatus = (stateName: string) => {
     const state = workflowStates.find(s => s.name === stateName);
@@ -183,6 +224,23 @@ export const KanbanBoard: React.FC<KanbanBoardProps> = ({
   const handleDragOver = () => {
     // This can be used for visual feedback during drag
   };
+=======
+  // Use shared drag-and-drop logic
+  const {
+    sensors,
+    draggedItem,
+    isUpdating,
+    wipLimitChecker,
+    handleDragStart,
+    handleDragEnd
+  } = useBoardDragDrop({
+    workItems,
+    workflowStates,
+    workItemsByStatus,
+    onWorkItemUpdated,
+    onRefresh: () => fetchBacklog(projectId)
+  });
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
   if (loading) {
     return (
@@ -194,7 +252,11 @@ export const KanbanBoard: React.FC<KanbanBoardProps> = ({
 
   if (error) {
     return (
+<<<<<<< HEAD
       <div className="bg-red-50 border border-red-200 rounded-md p-4">
+=======
+      <div className="bg-red-50 border-2 border-red-300 rounded-md p-4">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         <div className="flex items-center">
           <Icon name="alert-circle" className="h-5 w-5 text-red-400 mr-2" />
           <p className="text-red-800">{error}</p>
@@ -243,7 +305,10 @@ export const KanbanBoard: React.FC<KanbanBoardProps> = ({
         collisionDetection={closestCorners}
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
+<<<<<<< HEAD
         onDragOver={handleDragOver}
+=======
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       >
         <div className="flex space-x-6 overflow-x-auto pb-6">
           {workflowStates.map(state => (
@@ -256,7 +321,11 @@ export const KanbanBoard: React.FC<KanbanBoardProps> = ({
               <BoardColumn
                 state={state}
                 workItems={workItemsByStatus[state.name] || []}
+<<<<<<< HEAD
                 wipLimitStatus={getWipLimitStatus(state.name)}
+=======
+                wipLimitStatus={wipLimitChecker.checkStatus(state.name)}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                 isDraggedOver={draggedItem !== null}
               />
             </SortableContext>
@@ -272,7 +341,11 @@ export const KanbanBoard: React.FC<KanbanBoardProps> = ({
             {workItems.length === 0 ? 'No work items yet' : 'No matching items'}
           </h3>
           <p className="text-gray-600 mb-6">
+<<<<<<< HEAD
             {workItems.length === 0 
+=======
+            {workItems.length === 0
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
               ? 'Create work items in the backlog to see them on the board.'
               : 'Try adjusting your filters to see more items.'
             }

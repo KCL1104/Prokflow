@@ -1,5 +1,9 @@
 import React, { useState, useCallback } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { Modal } from '../common/Modal';
 import type { WorkItem } from '../../types';
 interface EstimationValidationResult {
@@ -215,9 +219,13 @@ export const EstimationModal: React.FC<EstimationModalProps> = ({
               value={customEstimate}
               onChange={(e) => {
                 setCustomEstimate(e.target.value);
+<<<<<<< HEAD
                 if (error) setError(null); // Clear error when user starts typing
               }}
               min="0"
+=======
+              }}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
               step="0.5"
               placeholder="Enter story points"
               className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -277,4 +285,8 @@ export const EstimationModal: React.FC<EstimationModalProps> = ({
       </form>
     </Modal>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

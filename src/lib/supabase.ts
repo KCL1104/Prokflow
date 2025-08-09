@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { createClient } from '@supabase/supabase-js'
 import type { Database } from '../types/database'
 
@@ -24,6 +25,33 @@ export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
     }
   }
 })
+=======
+import { createClient, type Session } from '@supabase/supabase-js'
+import type { Database } from '../types/database'
+import { config } from '../config/environment'
+
+export const supabase = createClient<Database>(
+  config.supabase.url, 
+  config.supabase.anonKey, 
+  {
+    auth: {
+      autoRefreshToken: true,
+      persistSession: true,
+      detectSessionInUrl: true
+    },
+    realtime: {
+      params: {
+        eventsPerSecond: config.features.enableRealtime ? 10 : 0
+      }
+    },
+    global: {
+      headers: {
+        'X-Client-Info': `${config.app.name}/${config.app.version}`
+      }
+    }
+  }
+)
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
 // Auth configuration with type safety
 interface AuthConfig {
@@ -134,7 +162,11 @@ export const auth = {
   },
 
   // Listen to auth state changes
+<<<<<<< HEAD
   onAuthStateChange: (callback: (event: string, session: any) => void) => {
+=======
+  onAuthStateChange: (callback: (event: string, session: Session | null) => void) => {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     return supabase.auth.onAuthStateChange(callback)
   }
 }

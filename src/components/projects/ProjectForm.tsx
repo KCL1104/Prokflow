@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
 import { Loading } from '../common/Loading';
 import type { ProjectFormData, ValidationErrors } from '../../types/forms';
+=======
+import { Button } from '../ui/button';
+import { Loading } from '../common/Loading';
+import type { ProjectFormData, ValidationErrors, ProjectSettings } from '../../types/forms';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
 interface ProjectFormProps {
   initialData?: Partial<ProjectFormData>;
@@ -93,7 +99,11 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
     }
   };
 
+<<<<<<< HEAD
   const handleInputChange = (field: keyof ProjectFormData, value: any) => {
+=======
+  const handleInputChange = (field: keyof ProjectFormData, value: string | number[] | ProjectSettings) => {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     setFormData(prev => ({
       ...prev,
       [field]: value
@@ -108,7 +118,11 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
     }
   };
 
+<<<<<<< HEAD
   const handleSettingsChange = (field: keyof ProjectFormData['settings'], value: any) => {
+=======
+  const handleSettingsChange = (field: keyof ProjectFormData['settings'], value: string | number | number[]) => {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     setFormData(prev => ({
       ...prev,
       settings: {
@@ -187,7 +201,11 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
                 name="methodology"
                 value={option.value}
                 checked={formData.methodology === option.value}
+<<<<<<< HEAD
                 onChange={(e) => handleInputChange('methodology', e.target.value as any)}
+=======
+                onChange={(e) => handleInputChange('methodology', e.target.value)}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                 className="sr-only"
                 disabled={isLoading}
               />
@@ -217,7 +235,15 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
               type="number"
               id="sprintDuration"
               value={formData.settings.sprintDuration || ''}
+<<<<<<< HEAD
               onChange={(e) => handleSettingsChange('sprintDuration', parseInt(e.target.value) || undefined)}
+=======
+              onChange={(e) => {
+                  const value = e.target.value;
+                  const parsed = value ? parseInt(value, 10) : 14; // Default to 14 days
+                  handleSettingsChange('sprintDuration', parsed);
+                }}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
               min="1"
               max="30"
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -233,7 +259,11 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
           <select
             id="estimationUnit"
             value={formData.settings.estimationUnit}
+<<<<<<< HEAD
             onChange={(e) => handleSettingsChange('estimationUnit', e.target.value as any)}
+=======
+            onChange={(e) => handleSettingsChange('estimationUnit', e.target.value)}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             disabled={isLoading}
           >
@@ -303,4 +333,8 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
       </div>
     </form>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

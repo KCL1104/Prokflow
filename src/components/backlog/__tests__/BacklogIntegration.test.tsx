@@ -5,7 +5,11 @@ import type { WorkItem, TeamMember } from '../../../types';
 
 // Mock the drag and drop functionality
 vi.mock('@dnd-kit/core', () => ({
+<<<<<<< HEAD
   DndContext: ({ children, onDragEnd }: any) => (
+=======
+  DndContext: ({ children, onDragEnd }: { children: React.ReactNode; onDragEnd?: (event: { active: { id: string }; over: { id: string } }) => void }) => (
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     <div data-testid="dnd-context" onClick={() => onDragEnd?.({ active: { id: '1' }, over: { id: '2' } })}>
       {children}
     </div>
@@ -24,7 +28,11 @@ vi.mock('@dnd-kit/sortable', () => ({
     result.splice(newIndex, 0, removed);
     return result;
   }),
+<<<<<<< HEAD
   SortableContext: ({ children }: any) => <div>{children}</div>,
+=======
+  SortableContext: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   sortableKeyboardCoordinates: vi.fn(),
   verticalListSortingStrategy: vi.fn(),
   useSortable: vi.fn(() => ({

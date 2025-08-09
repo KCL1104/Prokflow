@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { Loading } from '../common/Loading';
 import { useAuth } from '../../contexts/AuthContext';
 import { AuthService } from '../../services/authService';
@@ -52,7 +56,11 @@ export function UserProfile() {
           timezone: userProfile.timezone || ''
         });
       }
+<<<<<<< HEAD
     } catch (err) {
+=======
+    } catch {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       setError('Failed to load profile');
     } finally {
       setLoading(false);
@@ -90,7 +98,11 @@ export function UserProfile() {
       
       setSuccess('Profile updated successfully!');
       await loadUserProfile(); // Reload to get updated data
+<<<<<<< HEAD
     } catch (err) {
+=======
+    } catch {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       setError('Failed to update profile');
     } finally {
       setSaving(false);
@@ -128,7 +140,11 @@ export function UserProfile() {
         });
         setShowPasswordForm(false);
       }
+<<<<<<< HEAD
     } catch (err) {
+=======
+    } catch {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       setError('Failed to update password');
     } finally {
       setSaving(false);
@@ -138,7 +154,11 @@ export function UserProfile() {
   const handleSignOut = async () => {
     try {
       await signOut();
+<<<<<<< HEAD
     } catch (err) {
+=======
+    } catch {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       setError('Failed to sign out');
     }
   };
@@ -254,7 +274,11 @@ export function UserProfile() {
             {/* Sidebar */}
             <div className="space-y-6">
               {/* Profile Picture */}
+<<<<<<< HEAD
               <div className="bg-gray-50 p-4 rounded-lg">
+=======
+              <div className="bg-white p-4 rounded-lg border-2 border-gray-200">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                 <h4 className="text-sm font-medium text-gray-900 mb-3">Profile Picture</h4>
                 <div className="flex items-center space-x-3">
                   <div className="h-16 w-16 rounded-full bg-gray-300 flex items-center justify-center">
@@ -271,7 +295,11 @@ export function UserProfile() {
                     )}
                   </div>
                   <div>
+<<<<<<< HEAD
                     <Button variant="secondary" size="small">
+=======
+                    <Button variant="secondary" size="sm">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                       Change Photo
                     </Button>
                     <p className="text-xs text-gray-500 mt-1">JPG, PNG up to 2MB</p>
@@ -280,12 +308,20 @@ export function UserProfile() {
               </div>
 
               {/* Account Actions */}
+<<<<<<< HEAD
               <div className="bg-gray-50 p-4 rounded-lg">
+=======
+              <div className="bg-white p-4 rounded-lg border-2 border-gray-200">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                 <h4 className="text-sm font-medium text-gray-900 mb-3">Account Security</h4>
                 <div className="space-y-2">
                   <Button
                     variant="secondary"
+<<<<<<< HEAD
                     size="small"
+=======
+                    size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                     className="w-full"
                     onClick={() => setShowPasswordForm(!showPasswordForm)}
                   >
@@ -293,8 +329,13 @@ export function UserProfile() {
                   </Button>
                   
                   <Button
+<<<<<<< HEAD
                     variant="danger"
                     size="small"
+=======
+                    variant="destructive"
+                    size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                     className="w-full"
                     onClick={handleSignOut}
                   >
@@ -304,7 +345,11 @@ export function UserProfile() {
               </div>
 
               {/* Account Info */}
+<<<<<<< HEAD
               <div className="bg-gray-50 p-4 rounded-lg">
+=======
+              <div className="bg-white p-4 rounded-lg border-2 border-gray-200">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                 <h4 className="text-sm font-medium text-gray-900 mb-3">Account Information</h4>
                 <div className="space-y-2 text-sm text-gray-600">
                   <div>
@@ -324,7 +369,11 @@ export function UserProfile() {
 
           {/* Password Change Form */}
           {showPasswordForm && (
+<<<<<<< HEAD
             <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+=======
+            <div className="mt-6 p-4 bg-white rounded-lg border-2 border-gray-200">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
               <h3 className="text-lg font-medium text-gray-900 mb-4">Change Password</h3>
               <form onSubmit={handlePasswordUpdate} className="space-y-4">
                 <div>
@@ -365,7 +414,11 @@ export function UserProfile() {
                 <div className="flex space-x-3">
                   <Button
                     type="submit"
+<<<<<<< HEAD
                     size="small"
+=======
+                    size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                     loading={saving}
                     disabled={saving || !passwordData.newPassword || !passwordData.confirmPassword}
                   >
@@ -374,7 +427,11 @@ export function UserProfile() {
                   <Button
                     type="button"
                     variant="secondary"
+<<<<<<< HEAD
                     size="small"
+=======
+                    size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                     onClick={() => {
                       setShowPasswordForm(false);
                       setPasswordData({
@@ -395,4 +452,8 @@ export function UserProfile() {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

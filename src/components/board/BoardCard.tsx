@@ -67,8 +67,13 @@ export const BoardCard: React.FC<BoardCardProps> = ({
       style={style}
       {...attributes}
       {...listeners}
+<<<<<<< HEAD
       className={`bg-white rounded-lg border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow cursor-grab active:cursor-grabbing ${
         isSortableDragging ? 'opacity-50 rotate-2 scale-105' : ''
+=======
+      className={`bg-warm-25 rounded-md border-2 border-default p-4 shadow-xs hover:shadow-sm hover:border-medium transition-all duration-150 cursor-grab active:cursor-grabbing ${
+        isSortableDragging ? 'opacity-60' : ''
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       }`}
     >
       {/* Card Header */}
@@ -78,17 +83,29 @@ export const BoardCard: React.FC<BoardCardProps> = ({
             name={getTypeIcon(workItem.type)} 
             className={`h-4 w-4 ${getTypeColor(workItem.type)}`} 
           />
+<<<<<<< HEAD
           <span className="text-xs text-gray-500 uppercase tracking-wide">
             {workItem.type}
           </span>
         </div>
         <span className={`px-2 py-1 text-xs font-medium rounded-full ${getPriorityColor(workItem.priority)}`}>
+=======
+          <span className="text-xs text-gray-500 uppercase tracking-wide font-medium">
+            {workItem.type}
+          </span>
+        </div>
+        <span className={`px-2 py-1 text-xs font-medium rounded-md ${getPriorityColor(workItem.priority)}`}>
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
           {workItem.priority}
         </span>
       </div>
 
       {/* Card Title */}
+<<<<<<< HEAD
       <h4 className="font-medium text-gray-900 mb-2 line-clamp-2">
+=======
+      <h4 className="font-medium text-gray-700 mb-2 line-clamp-2">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         {workItem.title}
       </h4>
 
@@ -105,13 +122,21 @@ export const BoardCard: React.FC<BoardCardProps> = ({
           {workItem.labels.slice(0, 3).map(label => (
             <span
               key={label}
+<<<<<<< HEAD
               className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full"
+=======
+              className="px-2 py-1 text-xs bg-warm-100 text-primary-600 rounded-md font-medium border border-light"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
             >
               {label}
             </span>
           ))}
           {workItem.labels.length > 3 && (
+<<<<<<< HEAD
             <span className="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full">
+=======
+            <span className="px-2 py-1 text-xs bg-warm-50 text-gray-600 rounded-md font-medium border border-light">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
               +{workItem.labels.length - 3}
             </span>
           )}
@@ -148,10 +173,22 @@ export const BoardCard: React.FC<BoardCardProps> = ({
         )}
       </div>
 
+<<<<<<< HEAD
       {/* Drag Handle Indicator */}
       <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+=======
+      {/* Drag Handle Indicator - Only show when draggable */}
+      <div 
+        className="absolute top-2 right-2 opacity-0 hover:opacity-60 transition-opacity duration-150 pointer-events-none"
+        aria-hidden="true"
+      >
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         <Icon name="grip-vertical" className="h-4 w-4 text-gray-400" />
       </div>
     </div>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

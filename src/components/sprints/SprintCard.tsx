@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React from 'react';
 import { Button } from '../common/Button';
+=======
+import React, { useMemo } from 'react';
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { Icon } from '../common/Icon';
 import type { Sprint } from '../../types';
 
@@ -20,6 +25,7 @@ export const SprintCard: React.FC<SprintCardProps> = React.memo(({
   onViewDetails,
   showActions = true
 }) => {
+<<<<<<< HEAD
   const getStatusColor = (status: Sprint['status']) => {
     switch (status) {
       case 'planning':
@@ -82,14 +88,84 @@ export const SprintCard: React.FC<SprintCardProps> = React.memo(({
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+=======
+  // Memoize status-related calculations
+  const statusConfig = useMemo(() => {
+    const configs = {
+      planning: {
+        color: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+        icon: 'clock' as const
+      },
+      active: {
+        color: 'bg-green-100 text-green-800 border-green-200',
+        icon: 'play' as const
+      },
+      completed: {
+        color: 'bg-gray-100 text-gray-800 border-gray-200',
+        icon: 'check' as const
+      }
+    };
+    
+    return configs[sprint.status] || configs.planning;
+  }, [sprint.status]);
+
+  // Memoize expensive calculations
+  const { formattedStartDate, formattedEndDate, progress, daysRemaining, isActive } = useMemo(() => {
+    const formatDate = (date: Date) => {
+      return date.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      });
+    };
+
+    const calculateProgress = () => {
+      const now = new Date();
+      const start = sprint.startDate;
+      const end = sprint.endDate;
+      
+      if (now < start) return 0;
+      if (now > end) return 100;
+      
+      const total = end.getTime() - start.getTime();
+      const elapsed = now.getTime() - start.getTime();
+      return Math.round((elapsed / total) * 100);
+    };
+
+    const getDaysRemaining = () => {
+      const now = new Date();
+      const end = sprint.endDate;
+      const diffTime = end.getTime() - now.getTime();
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      return diffDays;
+    };
+
+    return {
+      formattedStartDate: formatDate(sprint.startDate),
+      formattedEndDate: formatDate(sprint.endDate),
+      progress: calculateProgress(),
+      daysRemaining: getDaysRemaining(),
+      isActive: sprint.status === 'active'
+    };
+  }, [sprint.startDate, sprint.endDate, sprint.status]);
+
+
+  return (
+    <div className="bg-white rounded-lg border-2 border-gray-300 shadow-sm hover:shadow-md transition-shadow">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       <div className="p-6">
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <div className="flex items-center space-x-3 mb-2">
               <h3 className="text-lg font-semibold text-gray-900">{sprint.name}</h3>
+<<<<<<< HEAD
               <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${getStatusColor(sprint.status)}`}>
                 <Icon name={getStatusIcon(sprint.status)} className="h-3 w-3 mr-1" />
+=======
+              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${statusConfig.color}`}>
+                <Icon name={statusConfig.icon} className="h-3 w-3 mr-1" />
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                 {sprint.status.charAt(0).toUpperCase() + sprint.status.slice(1)}
               </span>
             </div>
@@ -103,7 +179,11 @@ export const SprintCard: React.FC<SprintCardProps> = React.memo(({
               {onEdit && (
                 <Button
                   variant="secondary"
+<<<<<<< HEAD
                   size="small"
+=======
+                  size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   onClick={() => onEdit(sprint)}
                   disabled={isActive}
                   aria-label="Edit sprint"
@@ -114,7 +194,11 @@ export const SprintCard: React.FC<SprintCardProps> = React.memo(({
               {onViewDetails && (
                 <Button
                   variant="secondary"
+<<<<<<< HEAD
                   size="small"
+=======
+                  size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   onClick={() => onViewDetails(sprint)}
                   aria-label="View sprint details"
                 >
@@ -130,7 +214,11 @@ export const SprintCard: React.FC<SprintCardProps> = React.memo(({
           <div>
             <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Duration</p>
             <p className="text-sm text-gray-900">
+<<<<<<< HEAD
               {formatDate(sprint.startDate)} - {formatDate(sprint.endDate)}
+=======
+              {formattedStartDate} - {formattedEndDate}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
             </p>
           </div>
           <div>
@@ -172,12 +260,20 @@ export const SprintCard: React.FC<SprintCardProps> = React.memo(({
 
         {/* Actions */}
         {showActions && (
+<<<<<<< HEAD
           <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+=======
+          <div className="flex items-center justify-between pt-4 border-t-2 border-gray-200">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
             <div className="flex space-x-2">
               {sprint.status === 'planning' && onStart && (
                 <Button
                   variant="primary"
+<<<<<<< HEAD
                   size="small"
+=======
+                  size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   onClick={() => onStart(sprint)}
                 >
                   <Icon name="play" className="h-4 w-4 mr-1" />
@@ -187,7 +283,11 @@ export const SprintCard: React.FC<SprintCardProps> = React.memo(({
               {sprint.status === 'active' && onComplete && (
                 <Button
                   variant="secondary"
+<<<<<<< HEAD
                   size="small"
+=======
+                  size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   onClick={() => onComplete(sprint)}
                 >
                   <Icon name="check" className="h-4 w-4 mr-1" />
@@ -199,7 +299,11 @@ export const SprintCard: React.FC<SprintCardProps> = React.memo(({
             {onViewDetails && (
               <Button
                 variant="secondary"
+<<<<<<< HEAD
                 size="small"
+=======
+                size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                 onClick={() => onViewDetails(sprint)}
               >
                 View Details
@@ -211,4 +315,8 @@ export const SprintCard: React.FC<SprintCardProps> = React.memo(({
       </div>
     </div>
   );
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

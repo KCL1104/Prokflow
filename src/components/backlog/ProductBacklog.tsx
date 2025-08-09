@@ -21,7 +21,11 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { WorkItemCard } from '../work-items/WorkItemCard';
 import { WorkItemForm } from '../work-items/WorkItemForm';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { Modal } from '../common/Modal';
 import { Loading } from '../common/Loading';
 import { BulkEditModal } from './BulkEditModal';
@@ -126,7 +130,11 @@ export const ProductBacklog: React.FC<ProductBacklogProps> = ({
     } catch (error) {
       console.error('Failed to update story points:', error);
     }
+<<<<<<< HEAD
   }, [modals.estimationWorkItem, onUpdateWorkItem, modals]);
+=======
+  }, [onUpdateWorkItem, modals]);
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
   const handleDeleteItem = useCallback(async (workItem: WorkItem) => {
     if (window.confirm(`Are you sure you want to delete "${workItem.title}"?`)) {
@@ -150,7 +158,11 @@ export const ProductBacklog: React.FC<ProductBacklogProps> = ({
   }
 
   return (
+<<<<<<< HEAD
     <div className="bg-white shadow rounded-lg">
+=======
+    <div className="bg-white shadow-xs rounded-md">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       {/* Header */}
       <div className="px-6 py-4 border-b border-gray-200">
         <div className="flex items-center justify-between">
@@ -415,7 +427,11 @@ const SortableBacklogItem: React.FC<SortableBacklogItemProps> = ({
             <div className="mt-2 flex items-center space-x-2">
               <Button
                 variant="secondary"
+<<<<<<< HEAD
                 size="small"
+=======
+                size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                 onClick={onEstimate}
               >
                 {workItem.estimate ? `${workItem.estimate} points` : 'Estimate'}
@@ -426,4 +442,8 @@ const SortableBacklogItem: React.FC<SortableBacklogItemProps> = ({
       </div>
     </div>
   );
+<<<<<<< HEAD
 };    
+=======
+};
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

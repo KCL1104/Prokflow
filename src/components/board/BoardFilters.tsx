@@ -1,6 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import { Icon } from '../common/Icon';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import type { WorkItem } from '../../types';
 
 interface FilterOptions {
@@ -15,6 +19,10 @@ interface BoardFiltersProps {
   filters: FilterOptions;
   onFiltersChange: (filters: FilterOptions) => void;
   workItems: WorkItem[];
+<<<<<<< HEAD
+=======
+  compact?: boolean;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 }
 
 export const BoardFilters: React.FC<BoardFiltersProps> = ({
@@ -24,7 +32,11 @@ export const BoardFilters: React.FC<BoardFiltersProps> = ({
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+<<<<<<< HEAD
   // Extract unique values for filter options
+=======
+  // Extract unique values for filter options with optimized memoization
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   const filterOptions = useMemo(() => {
     const assignees = new Set<string>();
     const priorities = new Set<WorkItem['priority']>();
@@ -39,10 +51,17 @@ export const BoardFilters: React.FC<BoardFiltersProps> = ({
     });
 
     return {
+<<<<<<< HEAD
       assignees: Array.from(assignees),
       priorities: Array.from(priorities),
       types: Array.from(types),
       labels: Array.from(labels)
+=======
+      assignees: Array.from(assignees).sort(),
+      priorities: Array.from(priorities).sort(),
+      types: Array.from(types).sort(),
+      labels: Array.from(labels).sort()
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     };
   }, [workItems]);
 
@@ -100,7 +119,11 @@ export const BoardFilters: React.FC<BoardFiltersProps> = ({
           {hasActiveFilters && (
             <Button
               variant="secondary"
+<<<<<<< HEAD
               size="small"
+=======
+              size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
               onClick={clearFilters}
             >
               Clear All

@@ -1,6 +1,10 @@
 import { Component } from 'react';
 import type { ErrorInfo, ReactNode } from 'react';
+<<<<<<< HEAD
 import { Button } from './Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
 interface Props {
   children: ReactNode;

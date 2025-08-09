@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { Loading } from '../common/Loading';
 import { Modal } from '../common/Modal';
 import type { Project, TeamMember } from '../../types';
@@ -29,7 +33,11 @@ export const TeamMemberManagement: React.FC<TeamMemberManagementProps> = ({
   const [showInviteModal, setShowInviteModal] = useState(false);
   const [inviteForm, setInviteForm] = useState({
     userId: '',
+<<<<<<< HEAD
     role: 'member' as const
+=======
+    role: 'member' as 'admin' | 'member' | 'viewer'
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   });
   const [inviteLoading, setInviteLoading] = useState(false);
   const [editingMember, setEditingMember] = useState<string | null>(null);
@@ -168,7 +176,11 @@ export const TeamMemberManagement: React.FC<TeamMemberManagementProps> = ({
                         ))}
                       </select>
                       <Button
+<<<<<<< HEAD
                         size="small"
+=======
+                        size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                         variant="secondary"
                         onClick={() => setEditingMember(null)}
                         disabled={isLoading}
@@ -185,7 +197,11 @@ export const TeamMemberManagement: React.FC<TeamMemberManagementProps> = ({
                       <div className="flex items-center space-x-2">
                         {canEditMember(member) && (
                           <Button
+<<<<<<< HEAD
                             size="small"
+=======
+                            size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                             variant="secondary"
                             onClick={() => setEditingMember(member.userId)}
                             disabled={isLoading}
@@ -196,8 +212,13 @@ export const TeamMemberManagement: React.FC<TeamMemberManagementProps> = ({
                         
                         {canRemoveMember(member) && (
                           <Button
+<<<<<<< HEAD
                             size="small"
                             variant="danger"
+=======
+                            size="sm"
+                            variant="destructive"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                             onClick={() => handleRemoveMember(member.userId)}
                             disabled={isLoading}
                           >
@@ -244,7 +265,11 @@ export const TeamMemberManagement: React.FC<TeamMemberManagementProps> = ({
             <select
               id="role"
               value={inviteForm.role}
+<<<<<<< HEAD
               onChange={(e) => setInviteForm(prev => ({ ...prev, role: e.target.value as any }))}
+=======
+              onChange={(e) => setInviteForm(prev => ({ ...prev, role: e.target.value as 'admin' | 'member' | 'viewer' }))}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               disabled={inviteLoading}
             >

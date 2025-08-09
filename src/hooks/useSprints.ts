@@ -52,6 +52,18 @@ export function useSprints(projectId?: string) {
     }
   };
 
+<<<<<<< HEAD
+=======
+  const getSprint = async (id: string) => {
+    try {
+      return await sprintService.getSprint(id);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch sprint');
+      throw err;
+    }
+  };
+
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   return {
     sprints,
     activeSprint,
@@ -60,5 +72,9 @@ export function useSprints(projectId?: string) {
     fetchSprints,
     fetchActiveSprint,
     createSprint,
+<<<<<<< HEAD
+=======
+    getSprint,
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   };
 }

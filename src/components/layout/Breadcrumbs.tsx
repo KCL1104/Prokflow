@@ -74,7 +74,11 @@ export const Breadcrumbs: React.FC = () => {
   }
 
   return (
+<<<<<<< HEAD
     <nav className="bg-gray-50 border-b border-gray-200 px-6 py-3" aria-label="Breadcrumb">
+=======
+    <nav className="bg-white border-b-2 border-gray-300 px-6 py-3" aria-label="Breadcrumb">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       <ol className="flex items-center space-x-2 text-sm">
         {breadcrumbs.map((crumb, index) => (
           <li key={`${crumb.href || crumb.label}-${index}`} className="flex items-center">

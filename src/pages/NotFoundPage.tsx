@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import { Button } from '../components/common/Button';
+=======
+import { Button } from '../components/ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
 export const NotFoundPage: React.FC = () => {
   const navigate = useNavigate();

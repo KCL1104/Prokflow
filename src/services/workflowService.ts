@@ -24,7 +24,11 @@ function transformDbWorkflow(dbWorkflow: DbWorkflow, states: WorkflowState[] = [
   return {
     id: dbWorkflow.id,
     name: dbWorkflow.name,
+<<<<<<< HEAD
     isDefault: dbWorkflow.is_default,
+=======
+    isDefault: dbWorkflow.is_default || false,
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     methodology: dbWorkflow.methodology,
     states,
     transitions
@@ -37,7 +41,11 @@ function transformDbWorkflowState(dbState: DbWorkflowState): WorkflowState {
     id: dbState.id,
     name: dbState.name,
     category: dbState.category,
+<<<<<<< HEAD
     color: dbState.color,
+=======
+    color: dbState.color || '#6B7280',
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     wipLimit: dbState.wip_limit || undefined
   };
 }
@@ -87,8 +95,13 @@ export const workflowService: WorkflowService = {
     const transitions = (dbTransitions || []).map(t => 
       transformDbWorkflowTransition(
         t, 
+<<<<<<< HEAD
         (t.from_state as any)?.name || '', 
         (t.to_state as any)?.name || ''
+=======
+        (t.from_state as { name: string })?.name || '', 
+        (t.to_state as { name: string })?.name || ''
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       )
     );
 
@@ -101,7 +114,11 @@ export const workflowService: WorkflowService = {
       .from('workflows')
       .insert({
         name: data.name,
+<<<<<<< HEAD
         methodology: data.methodology as any,
+=======
+        methodology: data.methodology,
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         is_default: false
       })
       .select()
@@ -150,6 +167,7 @@ export const workflowService: WorkflowService = {
 
   async validateTransition(workflowId: string, from: string, to: string): Promise<boolean> {
     try {
+<<<<<<< HEAD
       const { data: isValid, error } = await supabase.rpc('validate_workflow_transition', {
         p_workflow_id: workflowId,
         p_from_state: from,
@@ -162,6 +180,49 @@ export const workflowService: WorkflowService = {
       }
 
       return isValid || false;
+=======
+      // Get the from state ID
+      const { data: fromState, error: fromError } = await supabase
+        .from('workflow_states')
+        .select('id')
+        .eq('workflow_id', workflowId)
+        .eq('name', from)
+        .single();
+
+      if (fromError || !fromState) {
+        console.warn('Failed to get from state:', fromError?.message);
+        return false;
+      }
+
+      // Get the to state ID
+      const { data: toState, error: toError } = await supabase
+        .from('workflow_states')
+        .select('id')
+        .eq('workflow_id', workflowId)
+        .eq('name', to)
+        .single();
+
+      if (toError || !toState) {
+        console.warn('Failed to get to state:', toError?.message);
+        return false;
+      }
+
+      // Check if transition exists
+      const { data: transition, error: transitionError } = await supabase
+        .from('workflow_transitions')
+        .select('id')
+        .eq('workflow_id', workflowId)
+        .eq('from_state_id', fromState.id)
+        .eq('to_state_id', toState.id)
+        .single();
+
+      if (transitionError) {
+        // If no transition found, it's invalid
+        return false;
+      }
+
+      return !!transition;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     } catch (error) {
       console.warn('Error validating transition:', error);
       return false;
@@ -197,7 +258,11 @@ export const workflowService: WorkflowService = {
     }
 
     return (transitions || [])
+<<<<<<< HEAD
       .map(t => (t.to_state as any)?.name)
+=======
+      .map(t => (t.to_state as { name: string })?.name)
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       .filter(Boolean);
   },
 

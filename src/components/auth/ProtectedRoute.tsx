@@ -35,6 +35,10 @@ export function ProtectedRoute({
 }
 
 // Higher-order component version for class components or more complex use cases
+<<<<<<< HEAD
+=======
+// eslint-disable-next-line react-refresh/only-export-components
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 export function withProtectedRoute<P extends object>(
   Component: React.ComponentType<P>,
   options: {
@@ -54,6 +58,10 @@ export function withProtectedRoute<P extends object>(
 }
 
 // Hook for checking authentication status in components
+<<<<<<< HEAD
+=======
+// eslint-disable-next-line react-refresh/only-export-components
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 export function useRequireAuth() {
   const { user, loading } = useAuth();
 

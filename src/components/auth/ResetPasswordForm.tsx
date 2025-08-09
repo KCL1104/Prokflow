@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { useAuth } from '../../contexts/AuthContext';
 
 interface ResetPasswordFormProps {
@@ -71,7 +75,11 @@ export function ResetPasswordForm({ onSuccess }: ResetPasswordFormProps) {
           onSuccess?.();
         }, 2000);
       }
+<<<<<<< HEAD
     } catch (err) {
+=======
+    } catch {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       setError('An unexpected error occurred');
     } finally {
       setLoading(false);
@@ -235,4 +243,8 @@ export function ResetPasswordForm({ onSuccess }: ResetPasswordFormProps) {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

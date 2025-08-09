@@ -1,4 +1,8 @@
 import { supabase, getCurrentUserId } from '../lib/supabase';
+<<<<<<< HEAD
+=======
+import { handleSupabaseError, UnauthorizedError, NotFoundError } from '../utils/errors';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import type { 
   WorkItem, 
   CreateWorkItemRequest, 
@@ -27,6 +31,11 @@ export interface TaskService {
     type?: string[];
     labels?: string[];
   }): Promise<WorkItem[]>;
+<<<<<<< HEAD
+=======
+  bulkUpdateWorkItems(workItemIds: string[], updateData: Partial<UpdateWorkItemRequest>): Promise<WorkItem[]>;
+  updateWorkItemDependencies(workItemId: string, dependencies: string[]): Promise<WorkItem>;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 }
 
 // Helper function to transform database work item to domain model
@@ -48,8 +57,13 @@ function transformDbWorkItem(dbWorkItem: DbWorkItem): WorkItem {
     dependencies: [], // Will be populated separately
     labels: dbWorkItem.labels || [],
     dueDate: dbWorkItem.due_date ? new Date(dbWorkItem.due_date) : undefined,
+<<<<<<< HEAD
     createdAt: new Date(dbWorkItem.created_at),
     updatedAt: new Date(dbWorkItem.updated_at)
+=======
+    createdAt: new Date(dbWorkItem.created_at || new Date().toISOString()),
+    updatedAt: new Date(dbWorkItem.updated_at || new Date().toISOString())
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   };
 }
 
@@ -57,7 +71,11 @@ export const workItemService: TaskService = {
   async createWorkItem(data: CreateWorkItemRequest): Promise<WorkItem> {
     const currentUserId = await getCurrentUserId();
     if (!currentUserId) {
+<<<<<<< HEAD
       throw new Error('User must be authenticated to create work items');
+=======
+      throw new UnauthorizedError('User must be authenticated to create work items');
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     }
 
     // Get the next position for the work item
@@ -78,7 +96,11 @@ export const workItemService: TaskService = {
       .single();
 
     if (!project) {
+<<<<<<< HEAD
       throw new Error('Project not found');
+=======
+      throw new NotFoundError('Project');
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     }
 
     const { data: defaultState } = await supabase
@@ -112,7 +134,11 @@ export const workItemService: TaskService = {
       .single();
 
     if (error) {
+<<<<<<< HEAD
       throw new Error(`Failed to create work item: ${error.message}`);
+=======
+      handleSupabaseError(error, 'Failed to create work item');
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     }
 
     const result = transformDbWorkItem(workItem);
@@ -317,8 +343,13 @@ export const workItemService: TaskService = {
   async filterWorkItems(projectId: string, filters: {
     status?: string[];
     assignee?: string[];
+<<<<<<< HEAD
     priority?: string[];
     type?: string[];
+=======
+    priority?: ('low' | 'medium' | 'high' | 'critical')[];
+    type?: ('story' | 'task' | 'bug' | 'epic')[];
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     labels?: string[];
   }): Promise<WorkItem[]> {
     let query = supabase
@@ -335,11 +366,19 @@ export const workItemService: TaskService = {
     }
 
     if (filters.priority && filters.priority.length > 0) {
+<<<<<<< HEAD
       query = query.in('priority', filters.priority as any);
     }
 
     if (filters.type && filters.type.length > 0) {
       query = query.in('type', filters.type as any);
+=======
+      query = query.in('priority', filters.priority);
+    }
+
+    if (filters.type && filters.type.length > 0) {
+      query = query.in('type', filters.type);
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     }
 
     if (filters.labels && filters.labels.length > 0) {
@@ -360,5 +399,56 @@ export const workItemService: TaskService = {
     }
 
     return results;
+<<<<<<< HEAD
+=======
+  },
+
+  async bulkUpdateWorkItems(workItemIds: string[], updateData: Partial<UpdateWorkItemRequest>): Promise<WorkItem[]> {
+    const { data: workItems, error } = await supabase
+      .from('work_items')
+      .update({
+        ...updateData,
+        updated_at: new Date().toISOString()
+      })
+      .in('id', workItemIds)
+      .select();
+
+    if (error) {
+      throw new Error(`Failed to bulk update work items: ${error.message}`);
+    }
+
+    const results = (workItems || []).map(transformDbWorkItem);
+    
+    // Get dependencies for each work item
+    for (const workItem of results) {
+      workItem.dependencies = await this.getWorkItemDependencies(workItem.id);
+    }
+
+    return results;
+  },
+
+  async updateWorkItemDependencies(workItemId: string, dependencies: string[]): Promise<WorkItem> {
+    const { data: workItem, error } = await supabase
+      .from('work_items')
+      .update({
+        dependencies,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', workItemId)
+      .select()
+      .single();
+
+    if (error) {
+      throw new Error(`Failed to update work item dependencies: ${error.message}`);
+    }
+
+    if (!workItem) {
+      throw new Error('Work item not found');
+    }
+
+    const result = transformDbWorkItem(workItem);
+    result.dependencies = dependencies;
+    return result;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   }
 };

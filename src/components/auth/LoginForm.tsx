@@ -1,5 +1,9 @@
 import { useState } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { useAuth } from '../../contexts/AuthContext';
 
 interface LoginFormProps {
@@ -29,7 +33,11 @@ export function LoginForm({ onToggleMode, onForgotPassword, onSuccess }: LoginFo
       } else {
         onSuccess?.();
       }
+<<<<<<< HEAD
     } catch (err) {
+=======
+    } catch {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       setError('An unexpected error occurred');
     } finally {
       setLoading(false);
@@ -45,7 +53,11 @@ export function LoginForm({ onToggleMode, onForgotPassword, onSuccess }: LoginFo
       if (error) {
         setError(error.message);
       }
+<<<<<<< HEAD
     } catch (err) {
+=======
+    } catch {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       setError('An unexpected error occurred');
     } finally {
       setLoading(false);
@@ -199,4 +211,8 @@ export function LoginForm({ onToggleMode, onForgotPassword, onSuccess }: LoginFo
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

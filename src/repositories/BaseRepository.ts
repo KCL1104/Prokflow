@@ -4,7 +4,11 @@ import { handleSupabaseError, NotFoundError } from '../utils/errors';
 // Base repository class with common CRUD operations
 // Note: Currently disabled due to TypeScript issues with generic table names
 // TODO: Refactor to use specific table types or implement proper type mapping
+<<<<<<< HEAD
 export abstract class BaseRepository<T extends Record<string, any>> {
+=======
+export abstract class BaseRepository<T extends Record<string, unknown>> {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   protected tableName: string;
 
   constructor(tableName: string) {
@@ -14,8 +18,15 @@ export abstract class BaseRepository<T extends Record<string, any>> {
   // Create a new record
   async create(data: Partial<T>): Promise<T> {
     try {
+<<<<<<< HEAD
       const { data: result, error } = await (supabase as any)
         .from(this.tableName)
+=======
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { data: result, error } = await (supabase as any)
+        .from(this.tableName)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         .insert(data as any)
         .select()
         .single();
@@ -36,6 +47,10 @@ export abstract class BaseRepository<T extends Record<string, any>> {
   // Get a record by ID
   async findById(id: string): Promise<T | null> {
     try {
+<<<<<<< HEAD
+=======
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       const { data, error } = await (supabase as any)
         .from(this.tableName)
         .select('*')
@@ -67,12 +82,20 @@ export abstract class BaseRepository<T extends Record<string, any>> {
   // Update a record by ID
   async update(id: string, data: Partial<T>): Promise<T> {
     try {
+<<<<<<< HEAD
+=======
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       const { data: result, error } = await (supabase as any)
         .from(this.tableName)
         .update({
           ...data,
           updated_at: new Date().toISOString()
+<<<<<<< HEAD
         } as any)
+=======
+        })
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         .eq('id', id)
         .select()
         .single();
@@ -97,6 +120,10 @@ export abstract class BaseRepository<T extends Record<string, any>> {
   // Delete a record by ID
   async delete(id: string): Promise<void> {
     try {
+<<<<<<< HEAD
+=======
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       const { error } = await (supabase as any)
         .from(this.tableName)
         .delete()
@@ -121,6 +148,10 @@ export abstract class BaseRepository<T extends Record<string, any>> {
     offset?: number;
   }): Promise<T[]> {
     try {
+<<<<<<< HEAD
+=======
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       let query = (supabase as any).from(this.tableName).select('*');
 
       // Apply conditions
@@ -161,6 +192,10 @@ export abstract class BaseRepository<T extends Record<string, any>> {
   // Count records with conditions
   async count(conditions?: Partial<T>): Promise<number> {
     try {
+<<<<<<< HEAD
+=======
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       let query = (supabase as any).from(this.tableName).select('*', { count: 'exact', head: true });
 
       if (conditions) {
@@ -195,9 +230,16 @@ export abstract class BaseRepository<T extends Record<string, any>> {
   // Batch create records
   async createMany(records: Partial<T>[]): Promise<T[]> {
     try {
+<<<<<<< HEAD
       const { data, error } = await (supabase as any)
         .from(this.tableName)
         .insert(records as any[])
+=======
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { data, error } = await (supabase as any)
+        .from(this.tableName)
+        .insert(records)
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         .select();
 
       if (error) {
@@ -214,8 +256,14 @@ export abstract class BaseRepository<T extends Record<string, any>> {
   }
 
   // Execute raw SQL query (use with caution)
+<<<<<<< HEAD
   protected async executeRpc(functionName: string, params?: Record<string, any>): Promise<any> {
     try {
+=======
+  protected async executeRpc(functionName: string, params?: Record<string, unknown>): Promise<unknown> {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       const { data, error } = await (supabase as any).rpc(functionName, params);
 
       if (error) {

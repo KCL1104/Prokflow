@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+// Re-export ProjectSettings from index for convenience
+export type { ProjectSettings } from './index';
+
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 export interface WorkItemFormData {
   title: string;
   description: string;

@@ -28,7 +28,11 @@ export const WorkItemCard: React.FC<WorkItemCardProps> = React.memo(({
 
   return (
     <div
+<<<<<<< HEAD
       className={`bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow ${onClick ? 'cursor-pointer' : ''
+=======
+      className={`bg-warm-25 border-2 border-default rounded-lg shadow-sm hover:shadow-md hover:bg-warm-50 hover:border-medium transition-all duration-150 ${onClick ? 'cursor-pointer' : ''
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         } ${compact ? 'p-3' : 'p-4'}`}
       onClick={onClick}
     >
@@ -97,13 +101,21 @@ export const WorkItemCard: React.FC<WorkItemCardProps> = React.memo(({
           {workItem.labels.slice(0, compact ? 2 : 4).map((label) => (
             <span
               key={label}
+<<<<<<< HEAD
               className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800"
+=======
+              className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-warm-100 text-primary-600 border border-light"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
             >
               {label}
             </span>
           ))}
           {workItem.labels.length > (compact ? 2 : 4) && (
+<<<<<<< HEAD
             <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-600">
+=======
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-warm-50 text-gray-600 border border-light"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
               +{workItem.labels.length - (compact ? 2 : 4)}
             </span>
           )}
@@ -150,7 +162,11 @@ export const WorkItemCard: React.FC<WorkItemCardProps> = React.memo(({
 
       {/* Dependencies indicator */}
       {workItem.dependencies.length > 0 && (
+<<<<<<< HEAD
         <div className="mt-2 pt-2 border-t border-gray-100">
+=======
+        <div className="mt-2 pt-2 border-t-2 border-default">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
           <span className="text-xs text-gray-500 flex items-center">
             <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />

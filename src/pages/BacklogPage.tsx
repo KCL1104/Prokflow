@@ -7,7 +7,11 @@ import { projectService } from '../services/projectService';
 import type { WorkItem, TeamMember, WorkItemFormData } from '../types';
 import { getErrorMessage } from '../utils';
 
+<<<<<<< HEAD
 export const BacklogPage: React.FC = () => {
+=======
+const BacklogPage: React.FC = () => {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   const { projectId } = useParams<{ projectId: string }>();
   const [workItems, setWorkItems] = useState<WorkItem[]>([]);
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
@@ -156,8 +160,13 @@ export const BacklogPage: React.FC = () => {
   }
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+=======
+    <div className="p-6 h-full overflow-auto">
+      <div className="max-w-7xl mx-auto">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-gray-900">Product Backlog</h1>
           <p className="mt-2 text-gray-600">
@@ -186,4 +195,10 @@ export const BacklogPage: React.FC = () => {
       </div>
     </div>
   );
+<<<<<<< HEAD
 };
+=======
+};
+
+export default BacklogPage;
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

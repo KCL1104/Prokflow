@@ -1,6 +1,10 @@
 import { supabase, getCurrentUserId } from '../lib/supabase';
 import type { 
   Project, 
+<<<<<<< HEAD
+=======
+  ProjectSettings,
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   TeamMember, 
   CreateProjectRequest, 
   UpdateProjectRequest,
@@ -32,24 +36,43 @@ function transformDbProject(dbProject: DbProject, teamMembers: TeamMember[] = []
     workflowId: dbProject.workflow_id,
     ownerId: dbProject.owner_id,
     teamMembers,
+<<<<<<< HEAD
     settings: (dbProject.settings as any) || {
+=======
+    settings: (dbProject.settings as unknown as ProjectSettings) || {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       workingDays: [1, 2, 3, 4, 5],
       timezone: 'UTC',
       estimationUnit: 'story_points' as const
     },
+<<<<<<< HEAD
     createdAt: new Date(dbProject.created_at),
     updatedAt: new Date(dbProject.updated_at)
+=======
+    createdAt: new Date(dbProject.created_at || new Date()),
+    updatedAt: new Date(dbProject.updated_at || new Date())
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   };
 }
 
 // Helper function to transform database team member to domain model
+<<<<<<< HEAD
 function transformDbTeamMember(dbMember: DbProjectMember): TeamMember {
+=======
+function transformDbTeamMember(dbMember: DbProjectMember & { users?: { email: string; full_name?: string | null } }): TeamMember {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   return {
     id: dbMember.id,
     userId: dbMember.user_id,
     projectId: dbMember.project_id,
     role: dbMember.role,
+<<<<<<< HEAD
     joinedAt: new Date(dbMember.joined_at)
+=======
+    joinedAt: new Date(dbMember.joined_at || new Date()),
+    name: dbMember.users?.full_name || 'Unknown User',
+    email: dbMember.users?.email || 'unknown@example.com'
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   };
 }
 
@@ -177,7 +200,17 @@ export const projectService: ProjectService = {
   async getProjectMembers(id: string): Promise<TeamMember[]> {
     const { data: members, error } = await supabase
       .from('project_members')
+<<<<<<< HEAD
       .select('*')
+=======
+      .select(`
+        *,
+        users (
+          email,
+          full_name
+        )
+      `)
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       .eq('project_id', id)
       .order('joined_at');
 
@@ -194,7 +227,11 @@ export const projectService: ProjectService = {
       .insert({
         project_id: projectId,
         user_id: userId,
+<<<<<<< HEAD
         role: role as any
+=======
+        role: role as Database['public']['Enums']['project_role']
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       });
 
     if (error) {
@@ -217,7 +254,11 @@ export const projectService: ProjectService = {
   async updateTeamMemberRole(projectId: string, userId: string, role: string): Promise<void> {
     const { error } = await supabase
       .from('project_members')
+<<<<<<< HEAD
       .update({ role: role as any })
+=======
+      .update({ role: role as Database['public']['Enums']['project_role'] })
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       .eq('project_id', projectId)
       .eq('user_id', userId);
 
@@ -274,7 +315,11 @@ export const projectService: ProjectService = {
     for (const member of projectMembers) {
       if (member.projects) {
         const teamMembers = teamMembersByProject[member.project_id] || [];
+<<<<<<< HEAD
         projects.push(transformDbProject(member.projects as any, teamMembers));
+=======
+        projects.push(transformDbProject(member.projects as DbProject, teamMembers));
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       }
     }
 

@@ -23,11 +23,19 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
   const getMethodologyBadgeColor = (methodology: string) => {
     switch (methodology) {
       case 'scrum':
+<<<<<<< HEAD
         return 'bg-blue-100 text-blue-800';
       case 'kanban':
         return 'bg-green-100 text-green-800';
       case 'waterfall':
         return 'bg-purple-100 text-purple-800';
+=======
+        return 'bg-primary-100 text-primary-800';
+      case 'kanban':
+        return 'bg-primary-100 text-primary-800';
+      case 'waterfall':
+        return 'bg-primary-100 text-primary-800';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       case 'custom':
         return 'bg-gray-100 text-gray-800';
       default:
@@ -41,7 +49,11 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
 
   if (isLoading) {
     return (
+<<<<<<< HEAD
       <div className="bg-white shadow rounded-lg p-6">
+=======
+      <div className="bg-white shadow-xs rounded-md p-6">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
         <div className="animate-pulse">
           <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
           <div className="h-4 bg-gray-200 rounded w-2/3 mb-6"></div>
@@ -56,7 +68,11 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
   }
 
   return (
+<<<<<<< HEAD
     <div className="bg-white shadow rounded-lg">
+=======
+    <div className="bg-white shadow-xs rounded-md">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       {/* Project Header */}
       <div className="px-6 py-4 border-b border-gray-200">
         <div className="flex items-start justify-between">
@@ -66,7 +82,11 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
               <p className="mt-1 text-sm text-gray-600">{project.description}</p>
             )}
             <div className="mt-2 flex items-center space-x-4">
+<<<<<<< HEAD
               <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getMethodologyBadgeColor(project.methodology)}`}>
+=======
+              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium ${getMethodologyBadgeColor(project.methodology)}`}>
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                 {project.methodology.charAt(0).toUpperCase() + project.methodology.slice(1)}
               </span>
               <span className="text-sm text-gray-500">
@@ -84,72 +104,120 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
       <div className="px-6 py-4">
         <h2 className="text-lg font-medium text-gray-900 mb-4">Project Overview</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+<<<<<<< HEAD
           <div className="bg-blue-50 rounded-lg p-4">
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+=======
+          <div className="bg-primary-50 rounded-md p-4">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                   </svg>
                 </div>
               </div>
               <div className="ml-3">
+<<<<<<< HEAD
                 <p className="text-sm font-medium text-blue-900">Total Work Items</p>
                 <p className="text-2xl font-semibold text-blue-900">
+=======
+                <p className="text-sm font-medium text-primary-900">Total Work Items</p>
+                <p className="text-2xl font-semibold text-primary-900">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   {metrics?.totalWorkItems || 0}
                 </p>
               </div>
             </div>
           </div>
 
+<<<<<<< HEAD
           <div className="bg-green-50 rounded-lg p-4">
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+=======
+          <div className="bg-primary-50 rounded-md p-4">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
               </div>
               <div className="ml-3">
+<<<<<<< HEAD
                 <p className="text-sm font-medium text-green-900">Completed</p>
                 <p className="text-2xl font-semibold text-green-900">
+=======
+                <p className="text-sm font-medium text-primary-900">Completed</p>
+                <p className="text-2xl font-semibold text-primary-900">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   {metrics?.completedWorkItems || 0}
                 </p>
               </div>
             </div>
           </div>
 
+<<<<<<< HEAD
           <div className="bg-yellow-50 rounded-lg p-4">
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+=======
+          <div className="bg-primary-50 rounded-md p-4">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
               </div>
               <div className="ml-3">
+<<<<<<< HEAD
                 <p className="text-sm font-medium text-yellow-900">Completion Rate</p>
                 <p className="text-2xl font-semibold text-yellow-900">
+=======
+                <p className="text-sm font-medium text-primary-900">Completion Rate</p>
+                <p className="text-2xl font-semibold text-primary-900">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   {completionRate}%
                 </p>
               </div>
             </div>
           </div>
 
+<<<<<<< HEAD
           <div className="bg-purple-50 rounded-lg p-4">
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+=======
+          <div className="bg-primary-50 rounded-md p-4">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
               </div>
               <div className="ml-3">
+<<<<<<< HEAD
                 <p className="text-sm font-medium text-purple-900">Avg Cycle Time</p>
                 <p className="text-2xl font-semibold text-purple-900">
+=======
+                <p className="text-sm font-medium text-primary-900">Avg Cycle Time</p>
+                <p className="text-2xl font-semibold text-primary-900">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   {metrics?.averageCycleTime ? `${Math.round(metrics.averageCycleTime)}d` : 'N/A'}
                 </p>
               </div>
@@ -163,7 +231,11 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
         <h3 className="text-lg font-medium text-gray-900 mb-4">Team Members</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {project.teamMembers.map((member) => (
+<<<<<<< HEAD
             <div key={member.id} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+=======
+            <div key={member.id} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-md">
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
               <div className="flex-shrink-0">
                 <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
                   <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">

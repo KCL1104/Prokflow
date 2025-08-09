@@ -10,7 +10,11 @@ vi.mock('../../lib/supabase', () => ({
   }
 }));
 
+<<<<<<< HEAD
 const mockSupabase = supabase as any;
+=======
+const mockSupabase = vi.mocked(supabase);
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
 describe('SprintService', () => {
   beforeEach(() => {

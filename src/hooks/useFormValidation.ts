@@ -7,7 +7,11 @@ export interface UseFormValidationOptions<T> {
   validate: (data: T) => ValidationErrors<T>;
 }
 
+<<<<<<< HEAD
 export function useFormValidation<T extends Record<string, any>>({
+=======
+export function useFormValidation<T extends Record<string, unknown>>({
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   initialData = {} as Partial<T>,
   validate
 }: UseFormValidationOptions<T>) {
@@ -15,7 +19,11 @@ export function useFormValidation<T extends Record<string, any>>({
   const [errors, setErrors] = useState<ValidationErrors<T>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+<<<<<<< HEAD
   const updateField = useCallback((field: keyof T, value: any) => {
+=======
+  const updateField = useCallback((field: keyof T, value: T[keyof T]) => {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     setFormData(prev => ({
       ...prev,
       [field]: value

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { Loading } from '../common/Loading';
 import type { WorkItemFormData, ValidationErrors } from '../../types/forms';
 
@@ -102,7 +106,11 @@ export const WorkItemForm: React.FC<WorkItemFormProps> = ({
     }
   };
 
+<<<<<<< HEAD
   const handleInputChange = (field: keyof WorkItemFormData, value: any) => {
+=======
+  const handleInputChange = (field: keyof WorkItemFormData, value: string | number | string[] | Date | undefined) => {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
     setFormData(prev => ({
       ...prev,
       [field]: value
@@ -153,8 +161,13 @@ export const WorkItemForm: React.FC<WorkItemFormProps> = ({
             id="title"
             value={formData.title}
             onChange={(e) => handleInputChange('title', e.target.value)}
+<<<<<<< HEAD
             className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               errors.title ? 'border-red-300' : 'border-gray-300'
+=======
+            className={`w-full px-3 py-2 border-2 rounded-md shadow-sm bg-warm-25 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:bg-warm-50 ${
+              errors.title ? 'border-red-300' : 'border-default'
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
             }`}
             placeholder="Enter work item title"
             disabled={isLoading}
@@ -171,8 +184,13 @@ export const WorkItemForm: React.FC<WorkItemFormProps> = ({
             value={formData.description}
             onChange={(e) => handleInputChange('description', e.target.value)}
             rows={4}
+<<<<<<< HEAD
             className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               errors.description ? 'border-red-300' : 'border-gray-300'
+=======
+            className={`w-full px-3 py-2 border-2 rounded-md shadow-sm bg-warm-25 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:bg-warm-50 ${
+              errors.description ? 'border-red-300' : 'border-default'
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
             }`}
             placeholder="Describe the work item"
             disabled={isLoading}
@@ -190,7 +208,11 @@ export const WorkItemForm: React.FC<WorkItemFormProps> = ({
               value={formData.acceptanceCriteria}
               onChange={(e) => handleInputChange('acceptanceCriteria', e.target.value)}
               rows={3}
+<<<<<<< HEAD
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+=======
+              className="w-full px-3 py-2 border-2 border-default rounded-md shadow-sm bg-warm-25 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:bg-warm-50"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
               placeholder="Define the acceptance criteria for this story"
               disabled={isLoading}
             />
@@ -208,10 +230,17 @@ export const WorkItemForm: React.FC<WorkItemFormProps> = ({
             {WORK_ITEM_TYPES.map((type) => (
               <label
                 key={type.value}
+<<<<<<< HEAD
                 className={`relative flex cursor-pointer rounded-lg border p-3 focus:outline-none ${
                   formData.type === type.value
                     ? 'border-blue-600 ring-2 ring-blue-600'
                     : 'border-gray-300'
+=======
+                className={`relative flex cursor-pointer rounded-lg border-2 p-3 bg-warm-25 hover:bg-warm-50 focus:outline-none ${
+                  formData.type === type.value
+                    ? 'border-primary-500 ring-2 ring-primary-500 bg-warm-100'
+                    : 'border-default'
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                 }`}
               >
                 <input
@@ -219,7 +248,11 @@ export const WorkItemForm: React.FC<WorkItemFormProps> = ({
                   name="type"
                   value={type.value}
                   checked={formData.type === type.value}
+<<<<<<< HEAD
                   onChange={(e) => handleInputChange('type', e.target.value as any)}
+=======
+                  onChange={(e) => handleInputChange('type', e.target.value)}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                   className="sr-only"
                   disabled={isLoading}
                 />
@@ -243,8 +276,13 @@ export const WorkItemForm: React.FC<WorkItemFormProps> = ({
           <select
             id="priority"
             value={formData.priority}
+<<<<<<< HEAD
             onChange={(e) => handleInputChange('priority', e.target.value as any)}
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+=======
+            onChange={(e) => handleInputChange('priority', e.target.value)}
+            className="w-full px-3 py-2 border-2 border-default rounded-md shadow-sm bg-warm-25 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:bg-warm-50"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
             disabled={isLoading}
           >
             {PRIORITY_OPTIONS.map((priority) => (
@@ -269,7 +307,11 @@ export const WorkItemForm: React.FC<WorkItemFormProps> = ({
             id="assigneeId"
             value={formData.assigneeId}
             onChange={(e) => handleInputChange('assigneeId', e.target.value)}
+<<<<<<< HEAD
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+=======
+            className="w-full px-3 py-2 border-2 border-default rounded-md shadow-sm bg-warm-25 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:bg-warm-50"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
             disabled={isLoading}
           >
             <option value="">Unassigned</option>
@@ -292,8 +334,13 @@ export const WorkItemForm: React.FC<WorkItemFormProps> = ({
             onChange={(e) => handleInputChange('estimate', e.target.value ? parseFloat(e.target.value) : undefined)}
             min="0"
             step="0.5"
+<<<<<<< HEAD
             className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               errors.estimate ? 'border-red-300' : 'border-gray-300'
+=======
+            className={`w-full px-3 py-2 border-2 rounded-md shadow-sm bg-warm-25 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:bg-warm-50 ${
+              errors.estimate ? 'border-red-300' : 'border-default'
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
             }`}
             placeholder="Story points / hours"
             disabled={isLoading}
@@ -312,8 +359,13 @@ export const WorkItemForm: React.FC<WorkItemFormProps> = ({
           id="dueDate"
           value={formData.dueDate}
           onChange={(e) => handleInputChange('dueDate', e.target.value)}
+<<<<<<< HEAD
           className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
             errors.dueDate ? 'border-red-300' : 'border-gray-300'
+=======
+          className={`w-full px-3 py-2 border-2 rounded-md shadow-sm bg-warm-25 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:bg-warm-50 ${
+            errors.dueDate ? 'border-red-300' : 'border-default'
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
           }`}
           disabled={isLoading}
         />
@@ -386,4 +438,8 @@ export const WorkItemForm: React.FC<WorkItemFormProps> = ({
       </div>
     </form>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

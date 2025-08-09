@@ -56,6 +56,18 @@ export function useWorkItems(projectId?: string) {
     }
   };
 
+<<<<<<< HEAD
+=======
+  const getSprintWorkItems = async (sprintId: string) => {
+    try {
+      return await workItemService.getSprintWorkItems(sprintId);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch sprint work items');
+      throw err;
+    }
+  };
+
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   return {
     workItems,
     loading,
@@ -63,5 +75,9 @@ export function useWorkItems(projectId?: string) {
     fetchBacklog,
     createWorkItem,
     updateWorkItem,
+<<<<<<< HEAD
+=======
+    getSprintWorkItems,
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   };
 }

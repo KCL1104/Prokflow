@@ -1,5 +1,9 @@
 import { useState } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { useAuth } from '../../contexts/AuthContext';
 
 interface SignUpFormProps {
@@ -76,7 +80,11 @@ export function SignUpForm({ onToggleMode, onSuccess }: SignUpFormProps) {
         });
         onSuccess?.();
       }
+<<<<<<< HEAD
     } catch (err) {
+=======
+    } catch {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       setError('An unexpected error occurred');
     } finally {
       setLoading(false);
@@ -92,7 +100,11 @@ export function SignUpForm({ onToggleMode, onSuccess }: SignUpFormProps) {
       if (error) {
         setError(error.message);
       }
+<<<<<<< HEAD
     } catch (err) {
+=======
+    } catch {
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
       setError('An unexpected error occurred');
     } finally {
       setLoading(false);
@@ -299,4 +311,8 @@ export function SignUpForm({ onToggleMode, onSuccess }: SignUpFormProps) {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

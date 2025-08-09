@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 import { Icon } from '../common/Icon';
 import { Loading } from '../common/Loading';
 import { WorkItemList } from '../work-items/WorkItemList';
@@ -163,7 +167,11 @@ export const SprintBacklog: React.FC<SprintBacklogProps> = ({
             {canRemoveItems && sprintWorkItems.length > 0 && (
               <Button
                 variant="secondary"
+<<<<<<< HEAD
                 size="small"
+=======
+                size="sm"
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
                 onClick={() => {
                   const selectedIds = Array.from(selectedItems);
                   if (selectedIds.length > 0) {
@@ -249,4 +257,8 @@ export const SprintBacklog: React.FC<SprintBacklogProps> = ({
       )}
     </div>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

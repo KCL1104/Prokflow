@@ -1,7 +1,10 @@
 #root {
+<<<<<<< HEAD
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+=======
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
   text-align: center;
 }
 

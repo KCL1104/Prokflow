@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< HEAD
+=======
+
+.env
+.trae
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)

@@ -1,5 +1,9 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react';
+<<<<<<< HEAD
 import { Button } from '../common/Button';
+=======
+import { Button } from '../ui/button';
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
 
 interface Props {
   children: ReactNode;
@@ -82,4 +86,8 @@ export class ErrorBoundary extends Component<Props, State> {
 
     return this.props.children;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 490e7fc (Enhance frontend and fix all other errors)
